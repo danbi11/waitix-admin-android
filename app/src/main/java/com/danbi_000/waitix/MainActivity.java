@@ -2,8 +2,10 @@ package com.danbi_000.waitix;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.nfc.NdefMessage;
 import android.nfc.NfcAdapter;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.util.DisplayMetrics;
 import android.view.MotionEvent;
 import android.view.View;
@@ -22,6 +24,7 @@ import com.danbi_000.waitix.anim.ExpandAnimation;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 public class MainActivity extends Activity implements View.OnClickListener {
 
@@ -48,6 +51,17 @@ public class MainActivity extends Activity implements View.OnClickListener {
         setContentView(R.layout.activity_main);
 
         initSildeMenu();
+
+        /* NFC */
+        nfcAdapter = NfcAdapter.getDefaultAdapter(this);
+
+        //안드로이드빔 nfc 연결되어있는지 체크
+        if(Tools.checkNFC(nfcAdapter)) {
+            intentHandler(getIntent());
+        } else {
+            Tools.displayToast(this, "This device doesn't support NFC or it is disabled.");
+        }
+
 
         long now = System.currentTimeMillis(); //현재시간 msec로 구한다
         Date date = new Date(now);  //현재시간을 저장
@@ -87,6 +101,30 @@ public class MainActivity extends Activity implements View.OnClickListener {
                 ListviewAdapter(this, R.layout.list_item_waiting, data);
         listView.setAdapter(adapter);
     }
+
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        intentHandler(getIntent());
+    }
+
+    private void intentHandler(Intent intent) {
+        if(NfcAdapter.ACTION_NDEF_DISCOVERED.equals(intent.getAction())
+                && intent.getType().equals(MIMETYPE)) {
+            Parcelable[] messagesRaw = intent.getParcelableArrayExtra(NfcAdapter.EXTRA_NDEF_MESSAGES);
+            NdefMessage ndefMessage = (NdefMessage) messagesRaw[0];
+            if(ndefMessage != null) {
+                Tools.displayToast(
+                        getApplicationContext(),
+                        new String(ndefMessage.getRecords()[0].getPayload())
+                );
+            }
+        }
+    }
+
+
+
     private void initSildeMenu() {
 
         // init left menu width

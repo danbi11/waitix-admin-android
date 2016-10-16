@@ -8,6 +8,7 @@ import android.nfc.NdefRecord;
 import android.nfc.NfcAdapter;
 import android.nfc.Tag;
 import android.nfc.tech.Ndef;
+import android.os.Build;
 import android.os.Bundle;
 import android.widget.EditText;
 
@@ -70,7 +71,9 @@ public class SettingActivity extends Activity {
 
     private void writeNfcTag(String msg, Tag tag) {
         NdefRecord[] ndefRecords = new NdefRecord[1];
-        ndefRecords[0] = NdefRecord.createTextRecord("", msg);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            ndefRecords[0] = NdefRecord.createTextRecord("", msg);
+        }
         NdefMessage ndefMessage = new NdefMessage(ndefRecords);
         Ndef ndef = Ndef.get(tag);
         try {
