@@ -1,4 +1,4 @@
-package com.danbi_000.waitix;
+package com.danbi_000.waitix.nfc;
 
 import android.app.Activity;
 import android.app.PendingIntent;

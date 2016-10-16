@@ -12,6 +12,8 @@ import android.os.Build;
 import android.os.Bundle;
 import android.widget.EditText;
 
+import com.danbi_000.waitix.nfc.Tools;
+
 import java.io.IOException;
 
 public class SettingActivity extends Activity {

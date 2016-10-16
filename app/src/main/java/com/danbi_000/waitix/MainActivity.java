@@ -21,6 +21,7 @@ import android.widget.Toast;
 
 import com.danbi_000.waitix.anim.CloseAnimation;
 import com.danbi_000.waitix.anim.ExpandAnimation;
+import com.danbi_000.waitix.nfc.Tools;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -97,8 +98,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
             }
         });
 
-        ListviewAdapter adapter = new
-                ListviewAdapter(this, R.layout.list_item_waiting, data);
+        ListviewAdapter adapter = new ListviewAdapter(this, R.layout.list_item_waiting, data);
         listView.setAdapter(adapter);
     }
 
@@ -158,14 +158,14 @@ public class MainActivity extends Activity implements View.OnClickListener {
         btn_storeManager.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(
+                Intent intentToModify = new Intent(
                         getApplicationContext(), // 현재 화면의 제어권자
-                        SignupActivity.class); // 다음 넘어갈 클래스 지정
+                        ModifyActivity.class); // 다음 넘어갈 클래스 지정
 
                 isLeftExpanded = false;
                 menuLeftSlideAnimationToggle();
                 finish();
-                startActivity(intent); // 다음 화면으로 넘어간다
+                startActivity(intentToModify); // 다음 화면으로 넘어간다
 
 
             }

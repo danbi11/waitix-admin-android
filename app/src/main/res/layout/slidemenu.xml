@@ -7,7 +7,7 @@
     <TextView
     android:layout_width="match_parent"
     android:layout_height="50dp"
-    android:text="대기 팀 목록"
+    android:text="대기 목록 관리"
     android:id="@+id/btn_waitList"
     android:layout_gravity="center_horizontal"
     android:gravity="center_vertical|center_horizontal"
@@ -22,7 +22,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:text="매장 등록 및 수정"
+        android:text="매장 정보 수정"
         android:id="@+id/btn_storeManager"
         android:layout_gravity="center_horizontal"
         android:gravity="center_vertical|center_horizontal"
