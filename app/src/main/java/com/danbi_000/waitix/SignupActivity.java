@@ -50,7 +50,8 @@ public class SignupActivity extends Activity implements View.OnClickListener{
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.layout_dbdemo);
+//        setContentView(R.layout.layout_dbdemo);
+        setContentView(R.layout.activity_signup);
 
         initSildeMenu();
 
@@ -188,10 +189,10 @@ public class SignupActivity extends Activity implements View.OnClickListener{
         btnDelete = (Button) findViewById(R.id.btnDelete);
         btnLoadAll = (Button) findViewById(R.id.btnLoadAll);
 
-        btnInsert.setOnClickListener(dbButtonsListener);
+/*        btnInsert.setOnClickListener(dbButtonsListener);
         btnUpdate.setOnClickListener(dbButtonsListener);
         btnDelete.setOnClickListener(dbButtonsListener);
-        btnLoadAll.setOnClickListener(dbButtonsListener);
+        btnLoadAll.setOnClickListener(dbButtonsListener);*/
 
         tvFinalData = (TextView) findViewById(R.id.tvData);
 
