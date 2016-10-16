@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.danbi_000.waitix.MainActivity">
+
+    <FrameLayout
+        android:layout_width="fill_parent"
+        android:layout_height="match_parent"
+        android:background="#ffffff"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:id="@+id/ll_menuLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#ff393c46"
+            android:gravity="left"
+            android:orientation="vertical"
+            android:textColor="#ff000000">
+
+            <!-- include -->
+
+            <include
+                android:id="@+id/ic_leftslidemenu"
+                layout="@layout/slidemenu"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_mainlayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#ffffffff"
+            android:gravity="left"
+            android:orientation="vertical">
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <RelativeLayout
+                    android:id="@+id/ll_fragment"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="top"
+                    android:background="#ffffffff">
+
+                <RelativeLayout
+                    android:id="@+id/relativeLayout2"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_gravity="top"
+                    android:background="#ffff4444">
+                    <ImageView
+                        android:id="@+id/btn_menu"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_alignParentLeft="true"
+                        android:layout_alignParentStart="true"
+                        android:layout_centerVertical="true"
+                        android:padding="15dp"
+                        android:src="@drawable/menu" />
+                    <TextView
+                        android:id="@+id/textView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="50dp"
+                        android:layout_marginTop="15dp"
+                        android:text="대기 팀 목록"
+                        android:textColor="#ffffff"
+                        android:textSize="16dp"
+                        android:textStyle="bold" />
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_centerVertical="true"
+
+                        android:layout_below="@+id/relativeLayout2">
+
+                        <ListView
+                            android:id="@+id/listView_waiting"
+                            android:layout_width="wrap_content"
+                            android:layout_height="403dp"
+                            android:layout_above="@+id/relativeLayout2"
+                            android:layout_below="@+id/rl_menu"
+                            android:divider="#999999"
+                            android:dividerHeight="0.2dp" />
+
+                        <RelativeLayout
+                            android:id="@+id/relativeLayout2"
+                            android:layout_width="match_parent"
+                            android:layout_height="120dp"
+                            android:layout_alignParentBottom="true"
+                            android:layout_centerHorizontal="true"
+                            android:background="#d6d5d5"
+                            android:transitionGroup="false">
+
+                            <TextView
+                                android:id="@+id/textView2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentLeft="true"
+                                android:layout_alignParentStart="true"
+                                android:layout_alignParentTop="true"
+                                android:layout_marginLeft="15dp"
+                                android:layout_marginTop="15dp"
+                                android:text="대기팀 수" />
+
+                            <TextView
+                                android:id="@+id/textView3"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignTop="@+id/textView2"
+                                android:layout_centerHorizontal="true"
+                                android:text="N"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:id="@+id/textView4"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignTop="@+id/textView3"
+                                android:layout_marginLeft="5dp"
+                                android:layout_toEndOf="@+id/textView3"
+                                android:layout_toRightOf="@+id/textView3"
+                                android:text="팀"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:id="@+id/textView5"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignLeft="@+id/textView2"
+                                android:layout_alignStart="@+id/textView2"
+                                android:layout_below="@+id/textView2"
+                                android:layout_marginTop="10dp"
+                                android:text="예상 대기시간" />
+
+                            <TextView
+                                android:id="@+id/textView6"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignLeft="@+id/textView3"
+                                android:layout_alignStart="@+id/textView3"
+                                android:layout_alignTop="@+id/textView5"
+                                android:text="N"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:id="@+id/textView7"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignTop="@+id/textView6"
+                                android:layout_marginLeft="5dp"
+                                android:layout_toEndOf="@+id/textView6"
+                                android:layout_toRightOf="@+id/textView6"
+                                android:text="분"
+                                android:textStyle="bold" />
+
+                            <ImageView
+                                android:id="@+id/btn_refresh"
+                                android:layout_width="150dp"
+                                android:layout_height="30dp"
+                                android:layout_alignLeft="@+id/textView5"
+                                android:layout_alignParentBottom="true"
+                                android:layout_alignStart="@+id/textView5"
+                                android:layout_marginBottom="10dp"
+                                android:layout_marginLeft="10dp"
+                                android:background="#ffff4444" />
+
+                            <ImageView
+                                android:id="@+id/btn_offline"
+                                android:layout_width="150dp"
+                                android:layout_height="30dp"
+                                android:layout_alignParentEnd="true"
+                                android:layout_alignParentRight="true"
+                                android:layout_alignTop="@+id/btn_refresh"
+                                android:layout_marginRight="25dp"
+                                android:background="#999999" />
+
+                            <TextView
+                                android:id="@+id/textView8"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignBottom="@+id/btn_offline"
+                                android:layout_alignEnd="@+id/btn_offline"
+                                android:layout_alignRight="@+id/btn_offline"
+                                android:layout_marginBottom="5dp"
+                                android:layout_marginRight="30dp"
+                                android:text="오프라인 번호 발급"
+                                android:textColor="#ffffff" />
+
+                            <TextView
+                                android:id="@+id/textView9"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignBottom="@+id/btn_refresh"
+                                android:layout_alignEnd="@+id/btn_refresh"
+                                android:layout_alignRight="@+id/btn_refresh"
+                                android:layout_marginBottom="5dp"
+                                android:layout_marginRight="50dp"
+                                android:text="새 로 고 침"
+                                android:textColor="#ffffff" />
+
+                        </RelativeLayout>
+                    </RelativeLayout>
+                </RelativeLayout>
+
+                <LinearLayout
+                    android:id="@+id/ll_empty"
+                    android:layout_width="fill_parent"
+                    android:layout_height="match_parent"
+                    android:background="@android:color/transparent"
+                    android:orientation="vertical"
+                    android:layout_marginTop="50dp">
+                </LinearLayout>
+            </FrameLayout>
+        </LinearLayout>
+    </FrameLayout>
+</LinearLayout>
