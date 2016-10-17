@@ -31,7 +31,7 @@ public class ModifyActivity extends Activity implements View.OnClickListener {
     private int leftMenuWidth;
     private static boolean isLeftExpanded;
     private ImageView btn_menu;
-    private TextView btn_storeManager;
+    private TextView btn_modify;
 
     MyDBHelper dbHelper;
     private EditText etID;
@@ -74,8 +74,9 @@ public class ModifyActivity extends Activity implements View.OnClickListener {
         // init ui
         btn_menu = (ImageView)findViewById(R.id.btn_menu);
         btn_menu.setOnClickListener(this);
-        btn_storeManager = (TextView)findViewById(R.id.btn_storeManager);
-        btn_storeManager.setOnClickListener(new View.OnClickListener() {
+
+        btn_modify = (TextView)findViewById(R.id.btn_modify);
+        btn_modify.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(

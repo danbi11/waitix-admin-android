@@ -5,13 +5,38 @@
     android:layout_height="match_parent">
 
     <TextView
+        android:text="STORE NAME"
+        android:layout_width="match_parent"
+        android:layout_height="130dp"
+        android:id="@+id/tv_storeName"
+        android:gravity="center_vertical|center_horizontal"
+        />
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:id="@+id/line0"
+        android:background="#999999" />
+    <TextView
     android:layout_width="match_parent"
     android:layout_height="50dp"
-    android:text="대기 목록 관리"
-    android:id="@+id/btn_waitList"
+    android:text="대기 팀 관리"
+    android:id="@+id/btn_waitingList"
     android:layout_gravity="center_horizontal"
     android:gravity="center_vertical|center_horizontal"
     android:textColor="#ffffff" />
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#999999" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="지난 대기 팀 목록"
+        android:id="@+id/btn_pastWaitingList"
+        android:layout_gravity="center_horizontal"
+        android:gravity="center_vertical|center_horizontal"
+        android:textColor="#ffffff" />
 
     <ImageView
         android:layout_width="match_parent"
@@ -23,7 +48,7 @@
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:text="매장 정보 수정"
-        android:id="@+id/btn_storeManager"
+        android:id="@+id/btn_modify"
         android:layout_gravity="center_horizontal"
         android:gravity="center_vertical|center_horizontal"
         android:textColor="#ffffff" />
@@ -33,10 +58,25 @@
         android:layout_height="1dp"
         android:id="@+id/line2"
         android:background="#999999" />
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:text="설정"
+        android:text="대기표 발급 마감"
+        android:id="@+id/btn_waitingClose"
+        android:layout_gravity="center_horizontal"
+        android:gravity="center_vertical|center_horizontal"
+        android:textColor="#ffffff" />
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#999999" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="태그 등록 및 이용방법"
         android:id="@+id/btn_setting"
         android:layout_gravity="center_horizontal"
         android:gravity="center_vertical|center_horizontal"
@@ -47,4 +87,14 @@
         android:layout_height="1dp"
         android:id="@+id/line3"
         android:background="#999999" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="로그아웃"
+        android:id="@+id/btn_logout"
+        android:layout_gravity="center_horizontal"
+        android:gravity="center_vertical|center_horizontal"
+        android:layout_marginTop="70dp"
+        android:textColor="#ffffff" />
 </LinearLayout>

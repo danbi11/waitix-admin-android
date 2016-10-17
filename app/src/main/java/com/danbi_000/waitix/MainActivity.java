@@ -38,7 +38,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
     private int leftMenuWidth;
     private static boolean isLeftExpanded;
     private ImageView btn_menu, btn_refresh, btn_offline;
-    private TextView btn_waitList, btn_storeManager, btn_setting;
+    private TextView btn_waitingList, btn_pastWaitingList, btn_modify, btn_waitingClose, btn_setting, btn_logout;
 
     public int waitingNum=1;
 
@@ -150,26 +150,25 @@ public class MainActivity extends Activity implements View.OnClickListener {
         btn_menu = (ImageView) findViewById(R.id.btn_menu);
         btn_menu.setOnClickListener(this);
 
+
+        btn_waitingList = (TextView) findViewById(R.id.btn_waitingList);
+        btn_waitingList.setOnClickListener(this);
+
+        btn_pastWaitingList = (TextView) findViewById(R.id.btn_pastWaitingList);
+        btn_pastWaitingList.setOnClickListener(this);
+
+        btn_modify = (TextView)findViewById(R.id.btn_modify);
+        btn_modify.setOnClickListener(this);
+
+        btn_waitingClose = (TextView) findViewById(R.id.btn_waitingClose);
+        btn_waitingClose.setOnClickListener(this);
+
         btn_setting = (TextView) findViewById(R.id.btn_setting);
         btn_setting.setOnClickListener(this);
 
+        btn_logout = (TextView) findViewById(R.id.btn_logout);
+        btn_logout.setOnClickListener(this);
 
-        btn_storeManager = (TextView)findViewById(R.id.btn_storeManager);
-        btn_storeManager.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intentToModify = new Intent(
-                        getApplicationContext(), // 현재 화면의 제어권자
-                        ModifyActivity.class); // 다음 넘어갈 클래스 지정
-
-                isLeftExpanded = false;
-                menuLeftSlideAnimationToggle();
-                finish();
-                startActivity(intentToModify); // 다음 화면으로 넘어간다
-
-
-            }
-        });
 
     }
 
@@ -256,16 +255,67 @@ public class MainActivity extends Activity implements View.OnClickListener {
             case R.id.btn_menu:
                 menuLeftSlideAnimationToggle();
                 break;
-            case R.id.btn_setting:
-                Intent intent = new Intent(
+
+            case R.id.btn_waitingList: //매장 정보 수정 메뉴
+                Intent intentToMain = new Intent(
+                        getApplicationContext(),
+                        MainActivity.class);
+
+                isLeftExpanded = false;
+                finish();
+                startActivity(intentToMain);
+                break;
+
+            case R.id.btn_pastWaitingList: //지난 대기 팀 목록 메뉴
+                Intent intentToPast = new Intent(
+                        getApplicationContext(),
+                        SettingActivity.class);//아직 액티비티 안만듬
+
+                isLeftExpanded = false;
+                finish();
+                startActivity(intentToPast);
+                break;
+
+            case R.id.btn_modify: //매장 정보 수정 메뉴
+                Intent intentToModify = new Intent(
+                        getApplicationContext(),
+                        ModifyActivity.class);
+
+                isLeftExpanded = false;
+                finish();
+                startActivity(intentToModify);
+                break;
+
+            case R.id.btn_waitingClose: //대기표 발급 마감 메뉴
+                Intent intentToWatingClose = new Intent(
+                        getApplicationContext(),
+                        ModifyActivity.class);  //아직 액티비티 안만듬
+
+                isLeftExpanded = false;
+                finish();
+                startActivity(intentToWatingClose);
+                break;
+
+            case R.id.btn_setting:  //태그 등록 및 이용방법 메뉴
+                Intent intentToSetting = new Intent(
                         getApplicationContext(), // 현재 화면의 제어권자
                         SettingActivity.class); // 다음 넘어갈 클래스 지정
 
                 isLeftExpanded = false;
-                menuLeftSlideAnimationToggle();
                 finish();
-                startActivity(intent); // 다음 화면으로 넘어간다
+                startActivity(intentToSetting); // 다음 화면으로 넘어간다
                 break;
+
+            case R.id.btn_logout: //로그아웃
+                Intent intentToLogin = new Intent(
+                        getApplicationContext(),
+                        LoginActivity.class);
+
+                isLeftExpanded = false;
+                finish();
+                startActivity(intentToLogin);
+                break;
+
 
         }
 

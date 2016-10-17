@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class LoginActivity extends Activity implements View.OnClickListener{
     ImageView btn_login;
@@ -31,6 +32,7 @@ public class LoginActivity extends Activity implements View.OnClickListener{
                         MainActivity.class); // 다음 넘어갈 클래스 지정
                 finish();
                 startActivity(intentToMain); // 다음 화면으로 넘어간다
+                Toast.makeText(this,"환영합니다",Toast.LENGTH_SHORT).show();
                 break;
 
             case R.id.btn_signup:
