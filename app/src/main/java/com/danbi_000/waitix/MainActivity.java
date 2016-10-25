@@ -144,6 +144,8 @@ public class MainActivity extends Activity implements View.OnClickListener {
         leftMenuLayoutPrams = (FrameLayout.LayoutParams) ll_menuLayout.getLayoutParams();
         leftMenuLayoutPrams.width = leftMenuWidth;
         ll_menuLayout.setLayoutParams(leftMenuLayoutPrams);
+        ll_menuLayout.setVisibility(View.GONE);
+
 
 
         // init ui
@@ -210,6 +212,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
         } else {
             isLeftExpanded = false;
 
+
             // close
             new CloseAnimation(ll_mainLayout, leftMenuWidth,
                     TranslateAnimation.RELATIVE_TO_SELF, 0.75f,
@@ -257,19 +260,14 @@ public class MainActivity extends Activity implements View.OnClickListener {
                 break;
 
             case R.id.btn_waitingList: //매장 정보 수정 메뉴
-                Intent intentToMain = new Intent(
-                        getApplicationContext(),
-                        MainActivity.class);
-
                 isLeftExpanded = false;
                 finish();
+                Intent intentToMain = new Intent(getApplicationContext(), MainActivity.class);
                 startActivity(intentToMain);
                 break;
 
             case R.id.btn_pastWaitingList: //지난 대기 팀 목록 메뉴
-                Intent intentToPast = new Intent(
-                        getApplicationContext(),
-                        SettingActivity.class);//아직 액티비티 안만듬
+                Intent intentToPast = new Intent(getApplicationContext(), SettingActivity.class);//아직 액티비티 안만듬
 
                 isLeftExpanded = false;
                 finish();
@@ -307,13 +305,11 @@ public class MainActivity extends Activity implements View.OnClickListener {
                 break;
 
             case R.id.btn_logout: //로그아웃
-                Intent intentToLogin = new Intent(
-                        getApplicationContext(),
-                        LoginActivity.class);
-
+                Intent intentToLogin = new Intent(getApplicationContext(), LoginActivity.class);
                 isLeftExpanded = false;
                 finish();
                 startActivity(intentToLogin);
+                Toast.makeText(getApplicationContext(),"로그아웃 되었습니다.",Toast.LENGTH_SHORT).show();
                 break;
 
 

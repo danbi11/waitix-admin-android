@@ -14,7 +14,7 @@ import android.widget.LinearLayout;
 public class CloseAnimation extends TranslateAnimation implements
 		TranslateAnimation.AnimationListener {
 
-	private LinearLayout slidingLayout;
+	private LinearLayout slidingLayout, menuLayout;
 	int panelWidth;
 
 	public CloseAnimation(LinearLayout layout, int width, int fromXType,
@@ -39,6 +39,12 @@ public class CloseAnimation extends TranslateAnimation implements
 		slidingLayout.setLayoutParams(params);
 		slidingLayout.requestLayout();
 		slidingLayout.startAnimation(this);
+
+		slidingLayout.setClickable(true);	//아래 깔린 메뉴 클릭 안되게
+
+
+
+
 
 	}
 

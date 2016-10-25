@@ -9,49 +9,150 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.danbi_000.waitix.LoginActivity">
+    tools:context="com.danbi_000.waitix.LoginActivity"
+    android:background="@drawable/store_login_bg">
 
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="textPersonName"
-        android:ems="10"
+    <ImageView
+        android:layout_width="131dp"
+        android:background="@drawable/store_login_logo"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="172dp"
-        android:id="@+id/editText6"
-        android:hint="매장고유번호" />
+        android:layout_marginTop="110dp"
+        android:id="@+id/logo"
+        android:layout_height="100.5dp" />
 
+    <RelativeLayout
+        android:id="@+id/idLayout"
+        android:layout_width="280dp"
+        android:layout_height="45dp"
+        android:layout_below="@+id/logo"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="90dp"
+        android:focusable="true"
+        android:focusableInTouchMode="true">
+        
+        <ImageView
+            android:id="@+id/idImage"
+            android:layout_width="15dp"
+            android:layout_height="16dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="15dp"
+            android:background="@drawable/store_login_st_icn" />
+
+        <TextView
+            android:id="@+id/idText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="STOREID"
+            android:textColor="#ffffff"
+            android:layout_toRightOf="@id/idImage"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="5dp"
+            android:textSize="12dp"
+            />
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="textPersonName"
+            android:background="@null"
+            android:ems="10"
+            android:layout_marginLeft="10dp"
+            android:id="@+id/editText6"
+            android:hint="Enter Store ID"
+            android:layout_below="@+id/idText"
+            android:layout_toRightOf="@+id/idImage"
+            android:layout_toEndOf="@+id/idImage"
+            android:textColorHint="#999999"
+            android:textColor="#999999"
+            android:textSize="13dp"
+            android:textColorLink="@android:color/darker_gray"
+            android:textCursorDrawable="@android:color/darker_gray" />
+    </RelativeLayout>
+
+    <ImageView
+        android:layout_width="240dp"
+        android:layout_height="1dp"
+        android:background="@drawable/store_login_line"
+        android:layout_below="@+id/idLayout"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/imageView2" />
+
+    <RelativeLayout
+        android:id="@+id/pwLayout"
+        android:layout_width="280dp"
+        android:layout_height="45dp"
+        android:layout_below="@+id/idLayout"
+        android:layout_alignRight="@+id/idLayout"
+        android:layout_alignEnd="@+id/idLayout"
+        android:layout_marginTop="10dp">
+
+        <ImageView
+            android:id="@+id/pwImage"
+            android:layout_width="15dp"
+            android:layout_height="16dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="15dp"
+            android:background="@drawable/store_login_pw_icn" />
+        <TextView
+            android:id="@+id/pwText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="PASSWORD"
+            android:textColor="#ffffff"
+            android:layout_toRightOf="@id/pwImage"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="5dp"
+            android:textSize="12dp"
+            />
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:inputType="textPassword"
+        android:background="@null"
         android:ems="10"
-        android:layout_below="@+id/editText6"
-        android:layout_alignRight="@+id/editText6"
-        android:layout_alignEnd="@+id/editText6"
-        android:layout_marginTop="22dp"
         android:id="@+id/editText7"
-        android:hint="비밀번호" />
+        android:hint="•••••••"
+        android:layout_marginLeft="10dp"
+        android:layout_below="@+id/pwText"
+        android:layout_toRightOf="@+id/pwImage"
+        android:layout_toEndOf="@+id/pwImage"
+        android:textColorHint="#999999"
+        android:textColor="#999999"
+        android:textSize="13dp"
+        android:textColorLink="?android:attr/colorForeground"
+        android:textCursorDrawable="@android:color/darker_gray" />
+
+    </RelativeLayout>
+
 
     <ImageView
-        android:layout_width="250dp"
-        android:layout_height="50dp"
-        android:background="#8713"
-        android:layout_below="@+id/editText7"
+        android:layout_width="240dp"
+        android:layout_height="1dp"
+        android:background="@drawable/store_login_line"
+        android:layout_below="@+id/pwLayout"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/imageView4" />
+
+    <ImageView
+        android:background="@drawable/store_login_btn"
+        android:layout_below="@+id/pwLayout"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="42dp"
-        android:id="@+id/btn_login" />
+        android:id="@+id/btn_login"
+        android:layout_height="45dp"
+        android:layout_width="240dp" />
 
     <TextView
-        android:text="회원가입"
+        android:text="등록된 매장 아이디가 없으신가요?"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:id="@+id/btn_signup"
-        android:textColor="@color/colorPrimaryDark"
-        android:textStyle="normal|bold"
+        android:textColor="#666666"
+        android:textSize="13dp"
         android:clickable="true"
         android:layout_below="@+id/btn_login"
         android:layout_centerHorizontal="true" />
+
 </RelativeLayout>
