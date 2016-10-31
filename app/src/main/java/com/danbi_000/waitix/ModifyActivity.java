@@ -1,7 +1,6 @@
 package com.danbi_000.waitix;
 
 import android.app.Activity;
-import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
@@ -31,7 +30,7 @@ public class ModifyActivity extends Activity implements View.OnClickListener {
     private int leftMenuWidth;
     private static boolean isLeftExpanded;
     private ImageView btn_menu;
-    private TextView btn_modify;
+//    private TextView btn_modify;
 
     MyDBHelper dbHelper;
     private EditText etID;
@@ -74,8 +73,8 @@ public class ModifyActivity extends Activity implements View.OnClickListener {
         // init ui
         btn_menu = (ImageView)findViewById(R.id.btn_menu);
         btn_menu.setOnClickListener(this);
-
-        btn_modify = (TextView)findViewById(R.id.btn_modify);
+/*
+        btn_modify = (TextView)findViewById(btn_modify);
         btn_modify.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -84,7 +83,7 @@ public class ModifyActivity extends Activity implements View.OnClickListener {
                         ModifyActivity.class); // 다음 넘어갈 클래스 지정
                 startActivity(intent); // 다음 화면으로 넘어간다
             }
-        });
+        });*/
     }
 
     /**

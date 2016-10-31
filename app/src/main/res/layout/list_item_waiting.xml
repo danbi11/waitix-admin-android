@@ -2,8 +2,7 @@
 
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="80dp"
-    android:layout_marginBottom="20dp"
+    android:layout_height="50dp"
     android:gravity="start|top">
 
     <TextView
@@ -13,61 +12,41 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_centerVertical="true"
-        android:layout_marginLeft="18dp"
-        android:layout_marginStart="18dp"
+        android:layout_marginLeft="15dp"
         android:text="000"
-        android:textSize="30dp"
-        android:textStyle="bold" />
-
-    <TextView
-        android:id="@+id/txt_time"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/txt_waitingNum"
-        android:layout_marginLeft="21dp"
-        android:layout_marginStart="21dp"
-        android:layout_marginTop="-5dp"
-        android:layout_toEndOf="@+id/txt_waitingNum"
-        android:layout_toRightOf="@+id/txt_waitingNum"
-        android:text="10:56 AM" />
+        android:textSize="15sp"
+        android:textStyle="bold"
+        />
 
     <TextView
         android:id="@+id/txt_numOfPeople"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/txt_time"
-        android:layout_alignStart="@+id/txt_time"
-        android:layout_below="@+id/txt_time"
-        android:layout_marginTop="10dp"
+        android:layout_alignBottom="@+id/txt_waitingNum"
+        android:layout_toRightOf="@+id/txt_waitingNum"
+        android:layout_marginLeft="40dp"
         android:text="0" />
 
+
     <TextView
+        android:id="@+id/txt_time"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="인"
-        android:id="@+id/textView18"
-        android:layout_alignBottom="@+id/txt_numOfPeople"
+        android:layout_alignBottom="@+id/txt_waitingNum"
+        android:layout_marginLeft="65dp"
         android:layout_toRightOf="@+id/txt_numOfPeople"
-        android:layout_toEndOf="@+id/txt_numOfPeople" />
+        android:text="00:00:00" />
+
+
 
     <ImageView
         android:id="@+id/img_call"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:layout_alignBottom="@+id/txt_numOfPeople"
-        android:layout_marginBottom="-5dp"
-        android:layout_marginLeft="190dp"
-        android:layout_toEndOf="@+id/txt_numOfPeople"
-        android:layout_toRightOf="@+id/txt_numOfPeople"
-        android:src="@drawable/bell01" />
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="40dp"
+        android:layout_toRightOf="@+id/txt_time"
+        android:padding="15dp"
+        android:src="@drawable/store_main_albtn" />
 
-    <ImageView
-        android:id="@+id/imageView3"
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_gravity="center_horizontal"
-        android:background="#999999" />
 </RelativeLayout>

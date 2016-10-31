@@ -16,7 +16,7 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
-import android.widget.TextView;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import com.danbi_000.waitix.anim.CloseAnimation;
@@ -38,7 +38,8 @@ public class MainActivity extends Activity implements View.OnClickListener {
     private int leftMenuWidth;
     private static boolean isLeftExpanded;
     private ImageView btn_menu, btn_refresh, btn_offline;
-    private TextView btn_waitingList, btn_pastWaitingList, btn_modify, btn_waitingClose, btn_setting, btn_logout;
+    private RelativeLayout btn_waitingList, btn_pastWaitingList, btn_modify, btn_waitingClose, btn_setting;
+    ImageView btn_logout;
 
     public int waitingNum=1;
 
@@ -72,8 +73,8 @@ public class MainActivity extends Activity implements View.OnClickListener {
         ListView listView = (ListView) findViewById(R.id.listView_waiting);
 
         ArrayList<ListviewItem> data = new ArrayList<>();
-        ListviewItem sample1 = new ListviewItem(waitingNum,strNow,4,R.drawable.bell01);
-        ListviewItem sample2 = new ListviewItem(++waitingNum,"13:24 AM",2,R.drawable.bell01);
+        ListviewItem sample1 = new ListviewItem(waitingNum,strNow,4,R.drawable.store_main_albtn);
+        ListviewItem sample2 = new ListviewItem(++waitingNum,"13:24 AM",2,R.drawable.store_main_offentbtn);
             data.add(sample1);
             data.add(sample2);
 
@@ -153,22 +154,22 @@ public class MainActivity extends Activity implements View.OnClickListener {
         btn_menu.setOnClickListener(this);
 
 
-        btn_waitingList = (TextView) findViewById(R.id.btn_waitingList);
+        btn_waitingList = (RelativeLayout) findViewById(R.id.btn_waitingList);
         btn_waitingList.setOnClickListener(this);
 
-        btn_pastWaitingList = (TextView) findViewById(R.id.btn_pastWaitingList);
+        btn_pastWaitingList = (RelativeLayout) findViewById(R.id.btn_pastWaitingList);
         btn_pastWaitingList.setOnClickListener(this);
 
-        btn_modify = (TextView)findViewById(R.id.btn_modify);
+        btn_modify = (RelativeLayout)findViewById(R.id.btn_modify);
         btn_modify.setOnClickListener(this);
 
-        btn_waitingClose = (TextView) findViewById(R.id.btn_waitingClose);
+        btn_waitingClose = (RelativeLayout) findViewById(R.id.btn_waitingClose);
         btn_waitingClose.setOnClickListener(this);
 
-        btn_setting = (TextView) findViewById(R.id.btn_setting);
+        btn_setting = (RelativeLayout) findViewById(R.id.btn_setting);
         btn_setting.setOnClickListener(this);
 
-        btn_logout = (TextView) findViewById(R.id.btn_logout);
+        btn_logout = (ImageView) findViewById(R.id.btn_logout);
         btn_logout.setOnClickListener(this);
 
 

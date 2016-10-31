@@ -2,99 +2,117 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="#23282e"
+    android:gravity="center_horizontal">
 
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:layout_below="@+id/imageView3"
+        android:layout_centerHorizontal="true"
+        android:gravity="center"
+        android:orientation="vertical">
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
     <TextView
         android:text="STORE NAME"
-        android:layout_width="match_parent"
-        android:layout_height="130dp"
+        android:textColor="#348eea"
+        android:textStyle="bold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:id="@+id/tv_storeName"
-        android:gravity="center_vertical|center_horizontal"
-        />
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:id="@+id/line0"
-        android:background="#999999" />
+        android:layout_centerVertical="true" />
     <TextView
-    android:layout_width="match_parent"
-    android:layout_height="50dp"
-    android:text="대기 팀 관리"
-    android:id="@+id/btn_waitingList"
-    android:layout_gravity="center_horizontal"
-    android:gravity="center_vertical|center_horizontal"
-    android:textColor="#ffffff" />
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="#999999" />
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/tv_storeName"
+        android:layout_alignBottom="@+id/tv_storeName"
+        android:text="님 안녕하세요!"
+        android:textColor="#348eea"
+        android:textStyle="bold"/>
+    </RelativeLayout></LinearLayout>
 
-    <TextView
+    <RelativeLayout
+        android:id="@+id/btn_waitingList"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:text="지난 대기 팀 목록"
+        android:layout_height="50dp">
+    <ImageView
+        android:layout_width="143.5dp"
+        android:layout_height="15dp"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="50dp"
+        android:background="@drawable/store_menu_wait" />
+    </RelativeLayout>
+
+    <RelativeLayout
         android:id="@+id/btn_pastWaitingList"
-        android:layout_gravity="center_horizontal"
-        android:gravity="center_vertical|center_horizontal"
-        android:textColor="#ffffff" />
-
-    <ImageView
         android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:id="@+id/line1"
-        android:background="#999999" />
+        android:layout_height="50dp">
+        <ImageView
+            android:layout_width="143.5dp"
+            android:layout_height="15dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="50dp"
+            android:background="@drawable/store_menu_last" />
+    </RelativeLayout>
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:text="매장 정보 수정"
+    <RelativeLayout
         android:id="@+id/btn_modify"
-        android:layout_gravity="center_horizontal"
-        android:gravity="center_vertical|center_horizontal"
-        android:textColor="#ffffff" />
-
-    <ImageView
         android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:id="@+id/line2"
-        android:background="#999999" />
+        android:layout_height="50dp">
+        <ImageView
+            android:layout_width="104dp"
+            android:layout_height="15dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="50dp"
+            android:background="@drawable/store_menu_infoset" />
+    </RelativeLayout>
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:text="대기표 발급 마감"
+    <RelativeLayout
         android:id="@+id/btn_waitingClose"
-        android:layout_gravity="center_horizontal"
-        android:gravity="center_vertical|center_horizontal"
-        android:textColor="#ffffff" />
-
-    <ImageView
         android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="#999999" />
+        android:layout_height="50dp">
+        <ImageView
+            android:layout_width="143.5dp"
+            android:layout_height="15dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="50dp"
+            android:background="@drawable/store_menu_end" />
+    </RelativeLayout>
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:text="태그 등록 및 이용방법"
+    <RelativeLayout
         android:id="@+id/btn_setting"
-        android:layout_gravity="center_horizontal"
-        android:gravity="center_vertical|center_horizontal"
-        android:textColor="#ffffff" />
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
+        <ImageView
+            android:layout_width="143.5dp"
+            android:layout_height="15dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="50dp"
+            android:background="@drawable/store_menu_statistics" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/btn_manual"
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
+        <ImageView
+            android:layout_width="143.5dp"
+            android:layout_height="15dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="50dp"
+            android:id="@+id/line0"
+            android:background="@drawable/store_menu_htuse" />
+    </RelativeLayout>
 
     <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:id="@+id/line3"
-        android:background="#999999" />
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:text="로그아웃"
         android:id="@+id/btn_logout"
-        android:layout_gravity="center_horizontal"
-        android:gravity="center_vertical|center_horizontal"
-        android:layout_marginTop="70dp"
-        android:textColor="#ffffff" />
+        android:layout_width="150dp"
+        android:layout_height="48.5dp"
+        android:background="@drawable/store_menu_logout_btn"
+        android:layout_marginTop="90dp"/>
+
 </LinearLayout>

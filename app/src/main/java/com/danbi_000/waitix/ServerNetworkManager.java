@@ -1,59 +1,90 @@
 package com.danbi_000.waitix;
 
-import java.io.IOException;
+import android.support.v4.util.Pair;
 
-import okhttp3.Interceptor;
+import java.net.CookieManager;
+import java.net.CookiePolicy;
+import java.util.List;
+
+import okhttp3.Callback;
+import okhttp3.FormBody;
+import okhttp3.HttpUrl;
+import okhttp3.JavaNetCookieJar;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
-import okhttp3.Response;
-import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
 
 /**
  * Created by danbi_000 on 2016-10-16.
  */
 
 
-public class ServerNetworkManager<T> {
+public class ServerNetworkManager {
 
-/*
-    PersistentCookieStore cookieStore = new PersistentCookieStore(MyApplication.getInstance());
-    CookieManager cookieManager = new CookieManager(cookieStore, CookiePolicy.ACCEPT_ALL);
+//    public static final String HOST = "192.168.0.4";  //nbfi
+    public static final String HOST = "10.0.2.2";
 
-    OkHttpClient okHttpClient = new OkHttpClient().newBuilder()
-    .cookieJar(new JavaNetCookieJar(cookieManager))
-            .build();
-    */
+    private OkHttpClient client;
+    private CookieManager cookieManager;
 
-    private T service;
-    private String baseUrl = "https://127.0.0.1/";
+    private static ServerNetworkManager instance;
 
-   public T getClient(Class<? extends T> type){
-       if(service == null) {
-           OkHttpClient okHttpClient = new OkHttpClient.Builder().addInterceptor(new Interceptor() {
-               @Override
-               public Response intercept(Chain chain) throws IOException {
+    public static ServerNetworkManager newInstance() {
+        if (instance == null) {
+            instance = new ServerNetworkManager();
+            return instance;
+        }
+        return instance;
+    }
 
-                   Request original = chain.request();
+    public ServerNetworkManager() {
+        client = new OkHttpClient();
+        cookieManager  = new CookieManager();
+        cookieManager.setCookiePolicy(CookiePolicy.ACCEPT_ALL);
+        OkHttpClient client = new OkHttpClient.Builder()
+                .cookieJar(new JavaNetCookieJar(cookieManager))
+                .build();
+    }
 
-                   Request request = original.newBuilder()
-                           .header("ex-hader", "sample")
-                           .method(original.method(), original.body())
-                           .build();
+    public void post(String url, List<Pair<String, String>> parameters, Callback callback) {
+        FormBody.Builder formBody = new FormBody.Builder();
+        for (Pair<String, String> parameter : parameters) {
+            formBody.add(parameter.first, parameter.second);
+        }
 
-                   return chain.proceed(request);
-               }
-           }).build();
+        HttpUrl httpUrl = new HttpUrl.Builder()
+                .scheme("http")
+                .host(HOST)
+                .port(8080)
+                .addPathSegment(url).build();
+        try {
+            Request request = new Request.Builder()
+                    .url(httpUrl)
+                    .post(formBody.build())
+                    .build();
+            client.newCall(request).enqueue(callback);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
-           Retrofit client = new Retrofit.Builder()
-                   .baseUrl(baseUrl)
-                   .client(okHttpClient)
-                   .addConverterFactory(GsonConverterFactory.create())
-                   .build();
-           service = client.create(type);
-//           APIService service = retrofit.create(APIService.class);
+    public void get(String url, List<Pair<String, String>> parameters, Callback callback) {
+        HttpUrl.Builder httpUrl = new HttpUrl.Builder()
+                .scheme("http")
+                .host(HOST)
+                .port(8080)
+                .addPathSegment(url);
+        for (Pair<String, String> parameter : parameters) {
+            httpUrl.addQueryParameter(parameter.first, parameter.second);
+        }
 
-       }
-       return service;
-       }
+        try {
+            Request request = new Request.Builder()
+                    .url(httpUrl.build())
+                    .build();
+            client.newCall(request).enqueue(callback);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
 }

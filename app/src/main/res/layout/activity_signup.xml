@@ -14,21 +14,37 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
+            <TextView
+                android:id="@+id/textView100"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_marginLeft="32dp"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="30dp"
+                android:text="매장 아이디" />
+
+            <EditText
+                android:id="@+id/etID"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@+id/textView100"
+                android:layout_alignStart="@+id/textView100"
+                android:layout_below="@+id/textView100" />
 
             <TextView
                 android:id="@+id/textView10"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true"
-
-                android:layout_marginLeft="32dp"
-                android:layout_marginStart="32dp"
-                android:layout_marginTop="30dp"
+                android:layout_alignLeft="@+id/etID"
+                android:layout_alignStart="@+id/etID"
+                android:layout_below="@+id/etID"
+                android:layout_marginTop="20dp"
                 android:text="매장 이름" />
 
             <EditText
-                android:id="@+id/editText"
+                android:id="@+id/etName"
                 android:layout_width="300dp"
                 android:layout_height="wrap_content"
                 android:layout_alignLeft="@+id/textView10"
@@ -39,14 +55,14 @@
                 android:id="@+id/textView11"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignLeft="@+id/editText"
-                android:layout_alignStart="@+id/editText"
-                android:layout_below="@+id/editText"
+                android:layout_alignLeft="@+id/etName"
+                android:layout_alignStart="@+id/etName"
+                android:layout_below="@+id/etName"
                 android:layout_marginTop="20dp"
                 android:text="전화번호" />
 
             <EditText
-                android:id="@+id/editText2"
+                android:id="@+id/etTel"
                 android:layout_width="300dp"
                 android:layout_height="wrap_content"
                 android:layout_alignLeft="@+id/textView11"
@@ -57,14 +73,14 @@
                 android:id="@+id/textView12"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignLeft="@+id/editText2"
-                android:layout_alignStart="@+id/editText2"
-                android:layout_below="@+id/editText2"
+                android:layout_alignLeft="@+id/etTel"
+                android:layout_alignStart="@+id/etTel"
+                android:layout_below="@+id/etTel"
                 android:layout_marginTop="20dp"
                 android:text="위치" />
 
             <EditText
-                android:id="@+id/editText3"
+                android:id="@+id/etLocation"
                 android:layout_width="300dp"
                 android:layout_height="wrap_content"
                 android:layout_alignLeft="@+id/textView12"
@@ -75,14 +91,14 @@
                 android:id="@+id/textView13"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignLeft="@+id/editText3"
-                android:layout_alignStart="@+id/editText3"
-                android:layout_below="@+id/editText3"
+                android:layout_alignLeft="@+id/etLocation"
+                android:layout_alignStart="@+id/etLocation"
+                android:layout_below="@+id/etLocation"
                 android:layout_marginTop="20dp"
                 android:text="매장소개" />
 
             <EditText
-                android:id="@+id/editText4"
+                android:id="@+id/etDesc"
                 android:layout_width="300dp"
                 android:layout_height="wrap_content"
                 android:layout_alignLeft="@+id/textView13"
@@ -93,14 +109,14 @@
                 android:id="@+id/textView14"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignLeft="@+id/editText4"
-                android:layout_alignStart="@+id/editText4"
-                android:layout_below="@+id/editText4"
+                android:layout_alignLeft="@+id/etDesc"
+                android:layout_alignStart="@+id/etDesc"
+                android:layout_below="@+id/etDesc"
                 android:layout_marginTop="20dp"
                 android:text="비밀번호" />
 
             <EditText
-                android:id="@+id/editText5"
+                android:id="@+id/etPassword"
                 android:layout_width="300dp"
                 android:layout_height="wrap_content"
                 android:layout_alignLeft="@+id/textView14"
@@ -113,14 +129,14 @@
                 android:id="@+id/textView15"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignLeft="@+id/editText5"
-                android:layout_alignStart="@+id/editText5"
-                android:layout_below="@+id/editText5"
+                android:layout_alignLeft="@+id/etPassword"
+                android:layout_alignStart="@+id/etPassword"
+                android:layout_below="@+id/etPassword"
                 android:layout_marginTop="20dp"
                 android:text="이미지 등록" />
 
             <ImageView
-                android:id="@+id/imageView"
+                android:id="@+id/ivImgsrc"
                 android:layout_width="80dp"
                 android:layout_height="80dp"
                 android:layout_alignLeft="@+id/textView15"
@@ -133,50 +149,26 @@
                 android:id="@+id/textView16"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignLeft="@id/imageView"
-                android:layout_below="@+id/imageView"
+                android:layout_alignLeft="@id/ivImgsrc"
+                android:layout_below="@+id/ivImgsrc"
                 android:layout_marginTop="20dp"
-                android:text="알림 시간 설정" />
+                android:text="한 팀당 소요되는 시간" />
 
-            <RadioGroup
-                android:id="@+id/radioGroup"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_alignLeft="@id/imageView"
-                android:layout_below="@+id/textView16"
-                android:layout_marginTop="10dp"
-                android:orientation="horizontal">
-
-                <RadioButton
-                    android:id="@+id/radio1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="5dp"
-                    android:text="3분 전" />
-
-                <RadioButton
-                    android:id="@+id/radio2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="5dp"
-                    android:text="5분 전" />
-
-                <RadioButton
-                    android:id="@+id/radio3"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="5dp"
-                    android:text="10분 전" />
-            </RadioGroup>
-
+            <EditText
+                android:id="@+id/etAlarmtime"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@+id/textView16"
+                android:layout_alignStart="@+id/textView16"
+                android:layout_below="@+id/textView16"/>
 
             <ImageView
                 android:id="@+id/btn_cancel"
                 android:layout_width="140dp"
                 android:layout_height="40dp"
-                android:layout_alignLeft="@+id/imageView"
-                android:layout_alignStart="@+id/imageView"
-                android:layout_below="@id/radioGroup"
+                android:layout_alignLeft="@+id/ivImgsrc"
+                android:layout_alignStart="@+id/ivImgsrc"
+                android:layout_below="@id/etAlarmtime"
                 android:layout_marginBottom="20dp"
                 android:layout_marginTop="30dp"
                 android:background="#bcbbbb" />
