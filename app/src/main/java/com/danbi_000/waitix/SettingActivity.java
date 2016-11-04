@@ -2,6 +2,7 @@ package com.danbi_000.waitix;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.nfc.FormatException;
 import android.nfc.NdefMessage;
 import android.nfc.NdefRecord;
@@ -65,7 +66,9 @@ public class SettingActivity extends Activity {
             String[] techList = tag.getTechList();
             for (String tech : techList) {
                 if (tech.equals(Ndef.class.getName())) {
-                    writeNfcTag(et1.getText().toString(), tag);
+                    SharedPreferences sharedPreferences = getSharedPreferences("account", MODE_PRIVATE);
+                    int snum = sharedPreferences.getInt("snum", 0);
+                    writeNfcTag(String.valueOf(snum), tag);
                 }
             }
         }

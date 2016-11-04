@@ -1,13 +1,13 @@
 package com.danbi_000.waitix;
 
 /**
- * Created by danbi_000 on 2016-07-26.
+ * Created by danbi_000 on 2016-11-01.
  */
-public class ListviewItem {
+public class ListviewItem2 {
     private int waitingNum;
     private String time;
     private int numOfPeople;
-    private int call;
+    private int status;
 
     public int getWaitingNum() {
         return waitingNum;
@@ -18,15 +18,14 @@ public class ListviewItem {
     public int getNumOfPeople(){
         return numOfPeople;
     }
-    public int getCall(){
-        return call;
+    public int getStatus(){
+        return status;
     }
 
-    public ListviewItem(int waitingNum, String time, int numOfPeople, int call){
+    public ListviewItem2(int waitingNum, String time, int numOfPeople, int status){
         this.waitingNum = waitingNum;
         this.time = time;
         this.numOfPeople = numOfPeople;
-        this.call = call;
+        this.status = status;
     }
 }
-

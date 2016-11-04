@@ -17,6 +17,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.danbi_000.waitix.anim.CloseAnimation;
@@ -38,8 +39,9 @@ public class MainActivity extends Activity implements View.OnClickListener {
     private int leftMenuWidth;
     private static boolean isLeftExpanded;
     private ImageView btn_menu, btn_refresh, btn_offline;
-    private RelativeLayout btn_waitingList, btn_pastWaitingList, btn_modify, btn_waitingClose, btn_setting;
-    ImageView btn_logout;
+    private RelativeLayout btn_waitingList, btn_pastWaitingList, btn_modify, btn_waitingClose, btn_setting, btn_manual;
+    private ImageView btn_logout;
+    private TextView tv_currentTime;
 
     public int waitingNum=1;
 
@@ -47,37 +49,45 @@ public class MainActivity extends Activity implements View.OnClickListener {
     private final String MIMETYPE = "application/neonlight88.com.nfctools";
     private NfcAdapter nfcAdapter;
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+
         initSildeMenu();
 
-        /* NFC */
+        /* NFC
         nfcAdapter = NfcAdapter.getDefaultAdapter(this);
 
-        //안드로이드빔 nfc 연결되어있는지 체크
-        if(Tools.checkNFC(nfcAdapter)) {
+        if(Tools.checkNFC(nfcAdapter)) { //안드로이드빔 nfc 연결되어있는지 체크
             intentHandler(getIntent());
         } else {
-            Tools.displayToast(this, "This device doesn't support NFC or it is disabled.");
-        }
+            Tools.displayToast(this, "태그를 등록하려면 NFC를 켜주세요.");
+        }*/
 
 
+        /* 현재 날짜,시간 표기 */
         long now = System.currentTimeMillis(); //현재시간 msec로 구한다
         Date date = new Date(now);  //현재시간을 저장
-        SimpleDateFormat sdfNow = new SimpleDateFormat("HH:mm:SS");
+        SimpleDateFormat sdfNow = new SimpleDateFormat("yyyy.MM.dd  HH:mm:ss");
         String strNow = sdfNow.format(date);
+        tv_currentTime = (TextView)findViewById(R.id.tv_currentTime);
+        tv_currentTime.setText(strNow);
 
+
+        /* 리스트에 데이터 넣기 */
         ListView listView = (ListView) findViewById(R.id.listView_waiting);
-
         ArrayList<ListviewItem> data = new ArrayList<>();
-        ListviewItem sample1 = new ListviewItem(waitingNum,strNow,4,R.drawable.store_main_albtn);
-        ListviewItem sample2 = new ListviewItem(++waitingNum,"13:24 AM",2,R.drawable.store_main_offentbtn);
+        ListviewItem sample1 = new ListviewItem(waitingNum,"13:03:21", 4, R.drawable.store_main_albtn);
+        ListviewItem sample2 = new ListviewItem(++waitingNum,"13:24:53", 2, R.drawable.store_main_offentbtn);
             data.add(sample1);
             data.add(sample2);
 
+        ListviewAdapter adapter = new ListviewAdapter(this, R.layout.list_item_waiting, data);
+        listView.setAdapter(adapter);
 
 
         ////////////////////////////////////////////////////////////////////////////////////////
@@ -86,6 +96,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
         btn_refresh.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                onResume();
                 Toast.makeText(getApplicationContext(),"새로고침 되었습니다.",Toast.LENGTH_SHORT).show();
             }
         });
@@ -99,8 +110,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
             }
         });
 
-        ListviewAdapter adapter = new ListviewAdapter(this, R.layout.list_item_waiting, data);
-        listView.setAdapter(adapter);
+
     }
 
 
@@ -108,6 +118,14 @@ public class MainActivity extends Activity implements View.OnClickListener {
     protected void onResume() {
         super.onResume();
         intentHandler(getIntent());
+
+        /* 현재 날짜,시간 표기 */
+        long now = System.currentTimeMillis();
+        Date date = new Date(now);
+        SimpleDateFormat sdfNow = new SimpleDateFormat("yyyy.MM.dd  HH:mm:ss");
+        String strNow = sdfNow.format(date);
+        tv_currentTime = (TextView)findViewById(R.id.tv_currentTime);
+        tv_currentTime.setText(strNow);
     }
 
     private void intentHandler(Intent intent) {
@@ -168,6 +186,9 @@ public class MainActivity extends Activity implements View.OnClickListener {
 
         btn_setting = (RelativeLayout) findViewById(R.id.btn_setting);
         btn_setting.setOnClickListener(this);
+
+        btn_manual = (RelativeLayout) findViewById(R.id.btn_manual);
+        btn_manual.setOnClickListener(this);
 
         btn_logout = (ImageView) findViewById(R.id.btn_logout);
         btn_logout.setOnClickListener(this);
@@ -268,8 +289,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
                 break;
 
             case R.id.btn_pastWaitingList: //지난 대기 팀 목록 메뉴
-                Intent intentToPast = new Intent(getApplicationContext(), SettingActivity.class);//아직 액티비티 안만듬
-
+                Intent intentToPast = new Intent(getApplicationContext(), PastWaitingListActivity.class);
                 isLeftExpanded = false;
                 finish();
                 startActivity(intentToPast);
@@ -288,21 +308,20 @@ public class MainActivity extends Activity implements View.OnClickListener {
             case R.id.btn_waitingClose: //대기표 발급 마감 메뉴
                 Intent intentToWatingClose = new Intent(
                         getApplicationContext(),
-                        ModifyActivity.class);  //아직 액티비티 안만듬
-
+                        CloseActivity.class);
                 isLeftExpanded = false;
                 finish();
                 startActivity(intentToWatingClose);
                 break;
 
             case R.id.btn_setting:  //태그 등록 및 이용방법 메뉴
-                Intent intentToSetting = new Intent(
-                        getApplicationContext(), // 현재 화면의 제어권자
-                        SettingActivity.class); // 다음 넘어갈 클래스 지정
-
                 isLeftExpanded = false;
-                finish();
-                startActivity(intentToSetting); // 다음 화면으로 넘어간다
+                startActivity(new Intent(this, SettingActivity.class));
+                break;
+
+            case R.id.btn_manual:  //태그 등록 및 이용방법 메뉴
+                isLeftExpanded = false;
+                startActivity(new Intent(this, MamualActivity.class));
                 break;
 
             case R.id.btn_logout: //로그아웃

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="45dp"
+    android:gravity="start|top">
+
+    <TextView
+        android:id="@+id/txt_waitingNum"
+        android:layout_width="30dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="15dp"
+        android:text="000"
+        android:textSize="15sp"
+        android:textStyle="bold"     />
+
+    <TextView
+        android:id="@+id/txt_numOfPeople"
+        android:layout_width="15dp"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/txt_waitingNum"
+        android:layout_toRightOf="@+id/txt_waitingNum"
+        android:layout_marginLeft="30dp"
+        android:text="0" />
+
+    <TextView
+        android:id="@+id/txt_status"
+        android:layout_width="60dp"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/txt_waitingNum"
+        android:layout_toRightOf="@+id/txt_numOfPeople"
+        android:layout_marginLeft="30dp"
+        android:text="발급 상태"/>
+
+    <TextView
+        android:id="@+id/txt_time"
+        android:layout_width="140dp"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/txt_waitingNum"
+        android:layout_marginLeft="30dp"
+        android:layout_toRightOf="@+id/txt_status"
+        android:text="2000.00.00 00:00:00" />
+
+</RelativeLayout>

@@ -1,7 +1,6 @@
 package com.danbi_000.waitix;
 
 import android.app.Activity;
-import android.database.Cursor;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.view.MotionEvent;
@@ -15,7 +14,6 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.danbi_000.waitix.anim.CloseAnimation;
 import com.danbi_000.waitix.anim.ExpandAnimation;
@@ -32,7 +30,7 @@ public class ModifyActivity extends Activity implements View.OnClickListener {
     private ImageView btn_menu;
 //    private TextView btn_modify;
 
-    MyDBHelper dbHelper;
+//    MyDBHelper dbHelper;
     private EditText etID;
     private EditText etFirstName;
     private EditText etLastName;
@@ -51,7 +49,7 @@ public class ModifyActivity extends Activity implements View.OnClickListener {
 
         initSildeMenu();
 
-        dbHelper = new MyDBHelper(ModifyActivity.this);
+//        dbHelper = new MyDBHelper(ModifyActivity.this);
         init();
     }
     private void initSildeMenu() {
@@ -176,22 +174,22 @@ public class ModifyActivity extends Activity implements View.OnClickListener {
 
     private void init() {
         etID = (EditText) findViewById(R.id.etID);
-        etFirstName = (EditText) findViewById(R.id.etFirstName);
-        etLastName = (EditText) findViewById(R.id.etLastName);
-        etAddress = (EditText) findViewById(R.id.etAddress);
-        etSalary = (EditText) findViewById(R.id.etSalary);
-
-        btnInsert = (Button) findViewById(R.id.btnInsert);
-        btnUpdate = (Button) findViewById(R.id.btnUpdate);
-        btnDelete = (Button) findViewById(R.id.btnDelete);
-        btnLoadAll = (Button) findViewById(R.id.btnLoadAll);
+//        etFirstName = (EditText) findViewById(R.id.etFirstName);
+//        etLastName = (EditText) findViewById(R.id.etLastName);
+//        etAddress = (EditText) findViewById(R.id.etAddress);
+//        etSalary = (EditText) findViewById(R.id.etSalary);
+//
+//        btnInsert = (Button) findViewById(R.id.btnInsert);
+//        btnUpdate = (Button) findViewById(R.id.btnUpdate);
+//        btnDelete = (Button) findViewById(R.id.btnDelete);
+//        btnLoadAll = (Button) findViewById(R.id.btnLoadAll);
 
 /*        btnInsert.setOnClickListener(dbButtonsListener);
         btnUpdate.setOnClickListener(dbButtonsListener);
         btnDelete.setOnClickListener(dbButtonsListener);
         btnLoadAll.setOnClickListener(dbButtonsListener);*/
 
-        tvFinalData = (TextView) findViewById(R.id.tvData);
+//        tvFinalData = (TextView) findViewById(R.id.tvData);
 
 
     }
@@ -200,6 +198,7 @@ public class ModifyActivity extends Activity implements View.OnClickListener {
         @Override
         public void onClick(View v) {
             switch (v.getId()){
+                /*
                 case R.id.btnInsert:
                     long resultInsert = dbHelper.insert(Integer.parseInt(getValue(etID)), getValue(etFirstName),
                             getValue(etLastName), getValue(etAddress), Double.valueOf(getValue(etSalary)));
@@ -253,6 +252,7 @@ public class ModifyActivity extends Activity implements View.OnClickListener {
 
                     tvFinalData.setText(finalData);
                     break;
+                    */
 
             }
         }
@@ -266,12 +266,12 @@ public class ModifyActivity extends Activity implements View.OnClickListener {
     @Override
     protected void onStart() {
         super.onStart();
-        dbHelper.openDB();
+//        dbHelper.openDB();
     }
 
     @Override
     protected void onStop() {
         super.onStop();
-        dbHelper.closeDB();
+//        dbHelper.closeDB();
     }
 }

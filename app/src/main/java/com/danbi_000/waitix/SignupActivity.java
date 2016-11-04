@@ -3,10 +3,15 @@ package com.danbi_000.waitix;
 import android.app.Activity;
 import android.os.Bundle;
 import android.support.v4.util.Pair;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
+
+import com.google.gson.Gson;
+import com.google.gson.JsonObject;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -17,7 +22,8 @@ import okhttp3.Callback;
 import okhttp3.Response;
 
 public class SignupActivity extends Activity implements View.OnClickListener{
-    ImageView btn_cancel, btn_ok, ivImgsrc;
+    RelativeLayout btn_cancel;
+    ImageView  btn_ok, ivImgsrc;
     EditText etID, etName, etTel, etLocation, etDesc, etPassword, etAlarmtime;
 
     @Override
@@ -25,7 +31,7 @@ public class SignupActivity extends Activity implements View.OnClickListener{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signup);
 
-        btn_cancel = (ImageView)findViewById(R.id.btn_cancel);
+        btn_cancel = (RelativeLayout)findViewById(R.id.btn_cancel);
         btn_cancel.setOnClickListener(this);
         btn_ok = (ImageView)findViewById(R.id.btn_ok);
         btn_ok.setOnClickListener(this);
@@ -69,31 +75,36 @@ public class SignupActivity extends Activity implements View.OnClickListener{
                                 Toast.makeText(SignupActivity.this, "오류가 발생했습니다.", Toast.LENGTH_LONG).show();
                             }
                         });
-
                         e.printStackTrace();
                     }
 
                     @Override
                     public void onResponse(Call call, final Response response) throws IOException {
-
-
                         runOnUiThread(new Runnable() {
                             @Override
                             public void run() {
                                 try {
-                                    Toast.makeText(SignupActivity.this, response.body().string(), Toast.LENGTH_LONG).show();
+                                    String body = response.body().string();
+                                    Log.d("response", body);
+
+                                    Gson gson = new Gson();
+                                    JsonObject jsonObject = gson.fromJson(body, JsonObject.class);
+
+                                    Toast.makeText(SignupActivity.this, jsonObject.get("desc").getAsString(), Toast.LENGTH_LONG).show();
+                                    if (jsonObject.get("success").getAsBoolean()) {
+                                        finish();
+                                    }
+
                                 } catch (IOException e) {
                                     e.printStackTrace();
+                                } finally {
+                                    response.close();
                                 }
-
                             }
                         });
-                        response.body().close();
-
                     }
                 });
 
-                finish();
                 break;
         }
     }

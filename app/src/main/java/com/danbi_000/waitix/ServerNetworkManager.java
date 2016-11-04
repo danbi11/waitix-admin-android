@@ -21,10 +21,12 @@ import okhttp3.Request;
 public class ServerNetworkManager {
 
 //    public static final String HOST = "192.168.0.4";  //nbfi
-    public static final String HOST = "10.0.2.2";
+//    public static final String HOST = "10.0.2.2";
+//    public static final String HOST = "192.168.0.21"; //카페 에스투
+    public static final String HOST = "192.168.43.247"; //단비파이
 
     private OkHttpClient client;
-    private CookieManager cookieManager;
+    public CookieManager cookieManager;
 
     private static ServerNetworkManager instance;
 
@@ -37,10 +39,9 @@ public class ServerNetworkManager {
     }
 
     public ServerNetworkManager() {
-        client = new OkHttpClient();
         cookieManager  = new CookieManager();
         cookieManager.setCookiePolicy(CookiePolicy.ACCEPT_ALL);
-        OkHttpClient client = new OkHttpClient.Builder()
+        client = new OkHttpClient.Builder()
                 .cookieJar(new JavaNetCookieJar(cookieManager))
                 .build();
     }

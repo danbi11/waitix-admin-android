@@ -56,7 +56,7 @@
                         android:layout_height="50dp"
                         android:layout_alignParentTop="true"
                         android:layout_centerHorizontal="true"
-                        android:background="#ffff4444"
+                        android:background="#373f4a"
                         android:orientation="vertical">
 
                         <ImageView
@@ -67,7 +67,7 @@
                             android:layout_alignParentStart="true"
                             android:layout_centerVertical="true"
                             android:padding="15dp"
-                            android:src="@drawable/menu" />
+                            android:src="@drawable/store_menu" />
 
                         <TextView
                             android:id="@+id/textView"
@@ -76,7 +76,7 @@
                             android:layout_centerVertical="true"
                             android:layout_toEndOf="@+id/btn_menu"
                             android:layout_toRightOf="@+id/btn_menu"
-                            android:text="매장 정보 수정"
+                            android:text="매장 정보 관리"
                             android:textColor="#ffffff"
                             android:textSize="16dp"
                             android:textStyle="bold" />
@@ -94,77 +94,44 @@
                             android:focusableInTouchMode="true">
 
                             <TextView
-                                android:id="@+id/textView10"
+                                android:id="@+id/textView100"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                android:layout_below="@+id/imageView"
                                 android:layout_alignParentLeft="true"
                                 android:layout_alignParentStart="true"
-
-                                android:layout_marginLeft="32dp"
-                                android:layout_marginStart="32dp"
+                                android:layout_marginLeft="40dp"
                                 android:layout_marginTop="30dp"
-                                android:text="매장 이름" />
-
+                                android:text="매장 아이디 *"
+                                android:textStyle="bold"/>
                             <EditText
-                                android:id="@+id/etName"
-                                android:layout_width="300dp"
+                                android:id="@+id/etID"
+                                android:layout_width="280dp"
                                 android:layout_height="wrap_content"
-                                android:layout_alignLeft="@+id/textView10"
-                                android:layout_alignStart="@+id/textView10"
-                                android:layout_below="@+id/textView10" />
+                                android:layout_alignLeft="@+id/textView100"
+                                android:layout_alignStart="@+id/textView100"
+                                android:layout_below="@+id/textView100"
+                                android:singleLine="true" />
 
                             <TextView
-                                android:id="@+id/textView11"
+                                android:id="@+id/textView17"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_alignLeft="@+id/etName"
-                                android:layout_alignStart="@+id/etName"
-                                android:layout_below="@+id/etName"
-                                android:layout_marginTop="20dp"
-                                android:text="전화번호" />
-
+                                android:layout_alignLeft="@+id/etID"
+                                android:layout_alignStart="@+id/etID"
+                                android:layout_below="@+id/etID"
+                                android:layout_marginTop="30dp"
+                                android:text="비밀번호 *"
+                                android:textStyle="bold"/>
                             <EditText
-                                android:id="@+id/etTel"
-                                android:layout_width="300dp"
+                                android:id="@+id/etPassword"
+                                android:layout_width="280dp"
                                 android:layout_height="wrap_content"
-                                android:layout_alignLeft="@+id/textView11"
-                                android:layout_alignStart="@+id/textView11"
-                                android:layout_below="@+id/textView11" />
-
-                            <TextView
-                                android:id="@+id/textView12"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_alignLeft="@+id/etTel"
-                                android:layout_alignStart="@+id/etTel"
-                                android:layout_below="@+id/etTel"
-                                android:layout_marginTop="20dp"
-                                android:text="위치" />
-
-                            <EditText
-                                android:id="@+id/etLocation"
-                                android:layout_width="300dp"
-                                android:layout_height="wrap_content"
-                                android:layout_alignLeft="@+id/textView12"
-                                android:layout_alignStart="@+id/textView12"
-                                android:layout_below="@+id/textView12" />
-                            <TextView
-                                android:id="@+id/textView13"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_alignLeft="@+id/etLocation"
-                                android:layout_alignStart="@+id/etLocation"
-                                android:layout_below="@+id/etLocation"
-                                android:layout_marginTop="20dp"
-                                android:text="매장소개" />
-
-                            <EditText
-                                android:id="@+id/etDesc"
-                                android:layout_width="300dp"
-                                android:layout_height="wrap_content"
-                                android:layout_alignLeft="@+id/textView13"
-                                android:layout_alignStart="@+id/textView13"
-                                android:layout_below="@+id/textView13" />
+                                android:layout_alignLeft="@+id/textView17"
+                                android:layout_alignStart="@+id/textView17"
+                                android:layout_below="@+id/textView17"
+                                android:ems="10"
+                                android:inputType="textPassword"/>
 
                             <TextView
                                 android:id="@+id/textView14"
@@ -172,13 +139,13 @@
                                 android:layout_height="wrap_content"
                                 android:layout_alignLeft="@+id/etDesc"
                                 android:layout_alignStart="@+id/etDesc"
-                                android:layout_below="@+id/etDesc"
-                                android:layout_marginTop="20dp"
-                                android:text="비밀번호" />
-
+                                android:layout_below="@+id/etPassword"
+                                android:layout_marginTop="30dp"
+                                android:text="비밀번호 확인 *"
+                                android:textStyle="bold"/>
                             <EditText
-                                android:id="@+id/etPassword"
-                                android:layout_width="300dp"
+                                android:id="@+id/etPassword2"
+                                android:layout_width="280dp"
                                 android:layout_height="wrap_content"
                                 android:layout_alignLeft="@+id/textView14"
                                 android:layout_alignStart="@+id/textView14"
@@ -187,86 +154,163 @@
                                 android:inputType="textPassword" />
 
                             <TextView
-                                android:id="@+id/textView15"
+                                android:id="@+id/textView10"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_alignLeft="@+id/etPassword"
-                                android:layout_alignStart="@+id/etPassword"
-                                android:layout_below="@+id/etPassword"
-                                android:layout_marginTop="20dp"
-                                android:text="이미지 등록" />
+                                android:layout_alignLeft="@+id/etID"
+                                android:layout_alignStart="@+id/etID"
+                                android:layout_below="@+id/etPassword2"
+                                android:layout_marginTop="30dp"
+                                android:text="매장 이름 *"
+                                android:textStyle="bold"
+                                android:singleLine="true"
+                                android:maxLines="1"
+                                android:maxLength="15"/>
 
-                            <ImageView
-                                android:id="@+id/ivImgsrc"
-                                android:layout_width="80dp"
-                                android:layout_height="80dp"
-                                android:layout_alignLeft="@+id/textView15"
-                                android:layout_alignStart="@+id/textView15"
-                                android:layout_below="@+id/textView15"
-                                android:layout_marginTop="10dp"
-                                android:src="@drawable/image_add" />
+                            <EditText
+                                android:id="@+id/etName"
+                                android:layout_width="280dp"
+                                android:layout_height="wrap_content"
+                                android:ems="10"
+                                android:layout_below="@+id/textView10"
+                                android:layout_alignLeft="@+id/textView10"
+                                android:layout_alignStart="@+id/textView10"
+                                android:maxLines="2" />
+
+                            <TextView
+                                android:id="@+id/textView11"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignLeft="@+id/etName"
+                                android:layout_alignStart="@+id/etName"
+                                android:layout_below="@+id/etName"
+                                android:layout_marginTop="30dp"
+                                android:text="매장 전화번호"
+                                android:textStyle="bold"
+                                android:inputType="number"/>
+                            <EditText
+                                android:id="@+id/etTel"
+                                android:layout_width="280dp"
+                                android:layout_height="wrap_content"
+                                android:layout_alignLeft="@+id/textView11"
+                                android:layout_alignStart="@+id/textView11"
+                                android:layout_below="@+id/textView11"
+                                android:maxLength="15"
+                                android:singleLine="true"/>
+
+                            <TextView
+                                android:id="@+id/textView12"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignLeft="@+id/etTel"
+                                android:layout_alignStart="@+id/etTel"
+                                android:layout_below="@+id/etTel"
+                                android:layout_marginTop="30dp"
+                                android:text="매장 주소"
+                                android:textStyle="bold"/>
+
+                            <EditText
+                                android:id="@+id/etLocation"
+                                android:layout_width="280dp"
+                                android:layout_height="wrap_content"
+                                android:layout_alignLeft="@+id/textView12"
+                                android:layout_alignStart="@+id/textView12"
+                                android:layout_below="@+id/textView12"
+                                android:maxLines="2"
+                                android:maxLength="35"/>
+
+                            <TextView
+                                android:id="@+id/textView13"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignLeft="@+id/etLocation"
+                                android:layout_alignStart="@+id/etLocation"
+                                android:layout_below="@+id/etLocation"
+                                android:layout_marginTop="30dp"
+                                android:text="소개글"
+                                android:textStyle="bold"/>
+                            <EditText
+                                android:id="@+id/etDesc"
+                                android:layout_width="280dp"
+                                android:layout_height="wrap_content"
+                                android:layout_alignLeft="@+id/textView13"
+                                android:layout_alignStart="@+id/textView13"
+                                android:layout_below="@+id/textView13"
+                                android:maxLines="10"
+                                android:maxEms="100"
+                                android:hint="최대 100자까지 입력 가능합니다"
+                                android:textColorHint="#888888"/>
+
                             <TextView
                                 android:id="@+id/textView16"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_below="@+id/ivImgsrc"
-                                android:layout_alignLeft="@id/ivImgsrc"
-                                android:layout_marginTop="20dp"
-                                android:text="알림 시간 설정"/>
-
-                            <RadioGroup
-                                android:id="@+id/radioGroup"
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:layout_below="@+id/textView16"
-                                android:layout_alignLeft="@id/ivImgsrc"
-                                android:layout_marginTop="10dp"
-                                android:orientation="horizontal">
-
-                                <RadioButton
-                                    android:id="@+id/radio1"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginRight="5dp"
-                                    android:text="3분 전" />
-
-                                <RadioButton
-                                    android:id="@+id/radio2"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginRight="5dp"
-                                    android:text="5분 전" />
-
-                                <RadioButton
-                                    android:id="@+id/radio3"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginRight="5dp"
-                                    android:text="10분 전" />
-                            </RadioGroup>
-
-
-                            <ImageView
-                                android:id="@+id/imageView6"
-                                android:layout_width="140dp"
-                                android:layout_height="40dp"
-                                android:layout_alignLeft="@+id/ivImgsrc"
-                                android:layout_below="@id/radioGroup"
-                                android:layout_alignStart="@+id/ivImgsrc"
+                                android:layout_alignLeft="@id/etDesc"
+                                android:layout_below="@+id/etDesc"
                                 android:layout_marginTop="30dp"
-                                android:layout_marginBottom="20dp"
-                                android:background="#bcbbbb" />
+                                android:text="한 팀당 소요되는 대기시간"
+                                android:textStyle="bold"
+                                android:inputType="number"
+                                android:singleLine="true"/>
+                            <EditText
+                                android:id="@+id/etAlarmtime"
+                                android:layout_width="60dp"
+                                android:layout_height="wrap_content"
+                                android:layout_alignLeft="@+id/textView16"
+                                android:layout_alignStart="@+id/textView16"
+                                android:layout_below="@+id/textView16"
+                                android:maxLines="1"
+                                android:maxLength="4"/>
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="분"
+                                android:textSize="14sp"
+                                android:layout_toRightOf="@+id/etAlarmtime"
+                                android:layout_below="@+id/textView16"
+                                android:layout_marginTop="15dp"
+                                android:layout_marginLeft="5dp"/>
+
+                            <TextView
+                                android:id="@+id/textView15"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignLeft="@+id/etAlarmtime"
+                                android:layout_alignStart="@+id/etAlarmtime"
+                                android:layout_below="@+id/etAlarmtime"
+                                android:layout_marginTop="30dp"
+                                android:text="매장 이미지 업로드"
+                                android:textStyle="bold"/>
+
+                            <TextView
+                                android:id="@+id/tvImgsrc"
+                                android:layout_width="200dp"
+                                android:layout_height="30dp"
+                                android:background="#bcbbbb"
+                                android:layout_below="@+id/textView15"
+                                android:layout_alignLeft="@+id/textView15"
+                                android:layout_alignStart="@+id/textView15"
+                                android:layout_marginTop="10dp"
+                                android:paddingLeft="10dp"
+                                android:text="파일 이름.jpg"
+                                android:gravity="center_vertical"/>
+                            <ImageView
+                                android:id="@+id/ivImgsrc"
+                                android:layout_width="80dp"
+                                android:layout_height="30dp"
+                                android:layout_toRightOf="@+id/tvImgsrc"
+                                android:layout_alignBottom="@+id/tvImgsrc"
+                                android:src="@drawable/store_setup_imgst" />
 
                             <ImageView
-                                android:id="@+id/imageView7"
-                                android:layout_width="140dp"
+                                android:id="@+id/btn_ok"
+                                android:layout_width="280dp"
                                 android:layout_height="40dp"
-                                android:layout_marginLeft="35dp"
-                                android:layout_marginStart="35dp"
-                                android:layout_alignBottom="@id/imageView6"
-                                android:layout_toEndOf="@+id/imageView6"
-                                android:layout_toRightOf="@+id/imageView6"
-                                android:background="#ffff4444" />
+                                android:layout_alignLeft="@+id/tvImgsrc"
+                                android:layout_alignStart="@+id/tvImgsrc"
+                                android:layout_below="@id/ivImgsrc"
+                                android:layout_marginTop="50dp"
+                                android:background="@drawable/store_setup_modok" />
                         </RelativeLayout>
                     </ScrollView>
                 </RelativeLayout>
