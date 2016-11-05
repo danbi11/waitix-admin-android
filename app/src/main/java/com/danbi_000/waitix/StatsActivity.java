@@ -13,7 +13,6 @@ import android.view.animation.TranslateAnimation;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -21,9 +20,7 @@ import android.widget.Toast;
 import com.danbi_000.waitix.anim.CloseAnimation;
 import com.danbi_000.waitix.anim.ExpandAnimation;
 
-import java.util.ArrayList;
-
-public class PastWaitingListActivity extends Activity implements View.OnClickListener {
+public class StatsActivity extends Activity implements View.OnClickListener{
     /* slide menu */
     private DisplayMetrics metrics;
     private LinearLayout ll_mainLayout;
@@ -32,7 +29,7 @@ public class PastWaitingListActivity extends Activity implements View.OnClickLis
     private FrameLayout.LayoutParams leftMenuLayoutPrams;
     private int leftMenuWidth;
     private static boolean isLeftExpanded;
-    private ImageView btn_menu, btn_refresh;
+    private ImageView btn_menu, btn_refresh, btn_offline;
     private RelativeLayout btn_waitingList, btn_pastWaitingList, btn_modify, btn_waitingClose, btn_setting, btn_manual;
     private TextView tv_storeName;
     private ImageView btn_logout;
@@ -45,7 +42,7 @@ public class PastWaitingListActivity extends Activity implements View.OnClickLis
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_past_waiting_list);
+        setContentView(R.layout.activity_stats);
 
         initSildeMenu();
 
@@ -59,28 +56,6 @@ public class PastWaitingListActivity extends Activity implements View.OnClickLis
         tv_storeName = (TextView)findViewById(R.id.tv_storeName);
         tv_storeName.setText(name);
 
-
-        btn_refresh= (ImageView)findViewById(R.id.btn_refresh);
-        btn_refresh.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                onResume();
-                Toast.makeText(getApplicationContext(),"새로고침 되었습니다.",Toast.LENGTH_SHORT).show();
-            }
-        });
-
-
-        /* 리스트에 데이터 넣기 */
-        int waitingNum=1;
-        ListView listView = (ListView) findViewById(R.id.listView_past_waiting);
-        ArrayList<ListviewItem2> data = new ArrayList<>();
-        ListviewItem2 sample1 = new ListviewItem2(waitingNum,"2016.03.25 11:54:26", 4, 0);
-        ListviewItem2 sample2 = new ListviewItem2(++waitingNum,"2016.03.25 11:54:26", 2, 1);
-        data.add(sample1);
-        data.add(sample2);
-
-        ListviewAdapter2 adapter = new ListviewAdapter2(this, R.layout.list_item_past_waiting, data);
-        listView.setAdapter(adapter);
     }
     private void initSildeMenu() {
 

@@ -4,6 +4,8 @@
 
     <uses-permission android:name="android.permission.NFC" />
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
 
     <uses-feature
         android:name="android.hardware.NFC"
@@ -25,10 +27,10 @@
         <activity
             android:name=".SignupActivity"
             android:windowSoftInputMode="stateAlwaysHidden" />
-        <activity android:name=".SettingActivity" />
+        <activity android:name=".StatsActivity" />
         <activity android:name=".MainActivity" />
         <activity android:name=".ModifyActivity" />
-        <activity android:name=".MamualActivity" />
+        <activity android:name=".ManualActivity" />
         <activity android:name=".PastWaitingListActivity" />
         <activity android:name=".CloseActivity" />
         <activity android:name=".SplashActivity"></activity>

@@ -2,6 +2,7 @@ package com.danbi_000.waitix;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.nfc.NdefMessage;
 import android.nfc.NfcAdapter;
 import android.os.Bundle;
@@ -40,10 +41,18 @@ public class MainActivity extends Activity implements View.OnClickListener {
     private static boolean isLeftExpanded;
     private ImageView btn_menu, btn_refresh, btn_offline;
     private RelativeLayout btn_waitingList, btn_pastWaitingList, btn_modify, btn_waitingClose, btn_setting, btn_manual;
+    private TextView tv_storeName;
     private ImageView btn_logout;
+    public String name;
+    public int snum;
+
+
+    private BackPressCloseHandler backPressCloseHandler; //뒤로가기 두번눌러종료
+
     private TextView tv_currentTime;
 
     public int waitingNum=1;
+
 
     /* NFC */
     private final String MIMETYPE = "application/neonlight88.com.nfctools";
@@ -59,6 +68,9 @@ public class MainActivity extends Activity implements View.OnClickListener {
 
         initSildeMenu();
 
+        /* 뒤로가기 두번눌러종료 */
+        backPressCloseHandler = new BackPressCloseHandler(this);
+
         /* NFC
         nfcAdapter = NfcAdapter.getDefaultAdapter(this);
 
@@ -68,6 +80,12 @@ public class MainActivity extends Activity implements View.OnClickListener {
             Tools.displayToast(this, "태그를 등록하려면 NFC를 켜주세요.");
         }*/
 
+        /* 로그인하고 받은 snum,name 정의 */
+        SharedPreferences sharedPreferences = getSharedPreferences("account", MODE_PRIVATE);
+        snum = sharedPreferences.getInt("snum", 0);
+        name = sharedPreferences.getString("name", "");
+        tv_storeName = (TextView)findViewById(R.id.tv_storeName);
+        tv_storeName.setText(name);
 
         /* 현재 날짜,시간 표기 */
         long now = System.currentTimeMillis(); //현재시간 msec로 구한다
@@ -91,6 +109,8 @@ public class MainActivity extends Activity implements View.OnClickListener {
 
 
         ////////////////////////////////////////////////////////////////////////////////////////
+
+
 
         btn_refresh= (ImageView)findViewById(R.id.btn_refresh);
         btn_refresh.setOnClickListener(new View.OnClickListener() {
@@ -281,47 +301,46 @@ public class MainActivity extends Activity implements View.OnClickListener {
                 menuLeftSlideAnimationToggle();
                 break;
 
-            case R.id.btn_waitingList: //매장 정보 수정 메뉴
+            case R.id.btn_waitingList: //대기팀 관리
                 isLeftExpanded = false;
                 finish();
                 Intent intentToMain = new Intent(getApplicationContext(), MainActivity.class);
                 startActivity(intentToMain);
                 break;
 
-            case R.id.btn_pastWaitingList: //지난 대기 팀 목록 메뉴
+            case R.id.btn_pastWaitingList: //지난 대기 번호 목록
                 Intent intentToPast = new Intent(getApplicationContext(), PastWaitingListActivity.class);
                 isLeftExpanded = false;
                 finish();
                 startActivity(intentToPast);
                 break;
 
-            case R.id.btn_modify: //매장 정보 수정 메뉴
-                Intent intentToModify = new Intent(
-                        getApplicationContext(),
-                        ModifyActivity.class);
-
+            case R.id.btn_modify: //매장 정보 관리
+                Intent intentToModify = new Intent(getApplicationContext(), ModifyActivity.class);
                 isLeftExpanded = false;
                 finish();
                 startActivity(intentToModify);
                 break;
 
-            case R.id.btn_waitingClose: //대기표 발급 마감 메뉴
-                Intent intentToWatingClose = new Intent(
-                        getApplicationContext(),
-                        CloseActivity.class);
+            case R.id.btn_waitingClose: //대기번호 발급 마감
+                Intent intentToWatingClose = new Intent(getApplicationContext(), CloseActivity.class);
                 isLeftExpanded = false;
                 finish();
                 startActivity(intentToWatingClose);
                 break;
 
-            case R.id.btn_setting:  //태그 등록 및 이용방법 메뉴
+            case R.id.btn_setting:  //대기번호 통계
+                Intent intentToStats = new Intent(getApplicationContext(), StatsActivity.class);
                 isLeftExpanded = false;
-                startActivity(new Intent(this, SettingActivity.class));
+                finish();
+                startActivity(intentToStats);
                 break;
 
             case R.id.btn_manual:  //태그 등록 및 이용방법 메뉴
+                Intent intentToManual = new Intent(getApplicationContext(), ManualActivity.class);
                 isLeftExpanded = false;
-                startActivity(new Intent(this, MamualActivity.class));
+                finish();
+                startActivity(intentToManual);
                 break;
 
             case R.id.btn_logout: //로그아웃
@@ -331,9 +350,15 @@ public class MainActivity extends Activity implements View.OnClickListener {
                 startActivity(intentToLogin);
                 Toast.makeText(getApplicationContext(),"로그아웃 되었습니다.",Toast.LENGTH_SHORT).show();
                 break;
-
-
         }
-
+    }
+    @Override
+    public void onBackPressed() {
+        if (isLeftExpanded){
+            menuLeftSlideAnimationToggle();
+        }else {
+//            super.onBackPressed();
+            backPressCloseHandler.onBackPressed();
+        }
     }
 }

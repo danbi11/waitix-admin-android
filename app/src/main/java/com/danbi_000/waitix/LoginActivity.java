@@ -101,7 +101,8 @@ public class LoginActivity extends Activity implements View.OnClickListener{
                                     if (jsonObject.get("success").getAsBoolean()) {
                                         SharedPreferences sharedPreferences = getSharedPreferences("account", MODE_PRIVATE);
                                         SharedPreferences.Editor editor = sharedPreferences.edit();
-                                        editor.putInt("snum", jsonObject.get("data").getAsInt());
+                                        editor.putInt("snum", jsonObject.get("snum").getAsInt());
+                                        editor.putString("name", jsonObject.get("name").getAsString());
                                         editor.commit();
                                         successLogin();
                                     }

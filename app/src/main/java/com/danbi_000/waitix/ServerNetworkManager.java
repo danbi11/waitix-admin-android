@@ -20,10 +20,12 @@ import okhttp3.Request;
 
 public class ServerNetworkManager {
 
-//    public static final String HOST = "192.168.0.4";  //nbfi
-//    public static final String HOST = "10.0.2.2";
-//    public static final String HOST = "192.168.0.21"; //카페 에스투
-    public static final String HOST = "192.168.43.247"; //단비파이
+//    public static final String HOST = "112.175.184.64"; //구입
+    public static final String HOST = "192.168.0.6"; //카페 에스투
+//    public static final String HOST = "192.168.43.247"; //단비파이
+//    public static final String HOST = "172.17.8.8"; //학교
+//    public static final String HOST = "192.168.0.211"; //오버더문
+
 
     private OkHttpClient client;
     public CookieManager cookieManager;

@@ -3,6 +3,13 @@ package com.danbi_000.waitix;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.nfc.FormatException;
+import android.nfc.NdefMessage;
+import android.nfc.NdefRecord;
+import android.nfc.NfcAdapter;
+import android.nfc.Tag;
+import android.nfc.tech.Ndef;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.view.MotionEvent;
@@ -13,17 +20,17 @@ import android.view.animation.TranslateAnimation;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.danbi_000.waitix.anim.CloseAnimation;
 import com.danbi_000.waitix.anim.ExpandAnimation;
+import com.danbi_000.waitix.nfc.Tools;
 
-import java.util.ArrayList;
+import java.io.IOException;
 
-public class PastWaitingListActivity extends Activity implements View.OnClickListener {
+public class ManualActivity extends Activity implements View.OnClickListener{
     /* slide menu */
     private DisplayMetrics metrics;
     private LinearLayout ll_mainLayout;
@@ -32,20 +39,28 @@ public class PastWaitingListActivity extends Activity implements View.OnClickLis
     private FrameLayout.LayoutParams leftMenuLayoutPrams;
     private int leftMenuWidth;
     private static boolean isLeftExpanded;
-    private ImageView btn_menu, btn_refresh;
+    private ImageView btn_menu, btn_refresh, btn_offline;
     private RelativeLayout btn_waitingList, btn_pastWaitingList, btn_modify, btn_waitingClose, btn_setting, btn_manual;
     private TextView tv_storeName;
     private ImageView btn_logout;
     public String name;
     public int snum;
 
+    /* NFC */
+    private final String MIMETYPE = "*/*";
+    private NfcAdapter nfcAdapter;
+
+    private TextView et1;
+
     private BackPressCloseHandler backPressCloseHandler; //뒤로가기 두번눌러종료
 
+
+    ImageView howtouse_btn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_past_waiting_list);
+        setContentView(R.layout.activity_manual);
 
         initSildeMenu();
 
@@ -59,28 +74,82 @@ public class PastWaitingListActivity extends Activity implements View.OnClickLis
         tv_storeName = (TextView)findViewById(R.id.tv_storeName);
         tv_storeName.setText(name);
 
-
-        btn_refresh= (ImageView)findViewById(R.id.btn_refresh);
-        btn_refresh.setOnClickListener(new View.OnClickListener() {
+        howtouse_btn = (ImageView)findViewById(R.id.howtouse_btn);
+        howtouse_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                onResume();
-                Toast.makeText(getApplicationContext(),"새로고침 되었습니다.",Toast.LENGTH_SHORT).show();
+
             }
         });
 
 
-        /* 리스트에 데이터 넣기 */
-        int waitingNum=1;
-        ListView listView = (ListView) findViewById(R.id.listView_past_waiting);
-        ArrayList<ListviewItem2> data = new ArrayList<>();
-        ListviewItem2 sample1 = new ListviewItem2(waitingNum,"2016.03.25 11:54:26", 4, 0);
-        ListviewItem2 sample2 = new ListviewItem2(++waitingNum,"2016.03.25 11:54:26", 2, 1);
-        data.add(sample1);
-        data.add(sample2);
 
-        ListviewAdapter2 adapter = new ListviewAdapter2(this, R.layout.list_item_past_waiting, data);
-        listView.setAdapter(adapter);
+        et1 = (TextView)findViewById(R.id.et1);
+        et1.setText(String.valueOf(snum));
+
+        nfcAdapter = NfcAdapter.getDefaultAdapter(this);
+        if(Tools.checkNFC(nfcAdapter)) {
+            intentHandler(getIntent());
+        } else {
+            Tools.displayToast(this, "등록하시려면 NFC를 읽기/쓰기 모드로 켜주세요.");
+        }
+
+
+    }
+    @Override
+    protected void onResume() {
+        super.onResume();
+        String[][] techList = new String[][]{
+                new String[]{Ndef.class.getName()}
+        };
+        Tools.foregroundDispatchSetup(this, nfcAdapter, MIMETYPE, techList);
+    }
+
+    @Override
+    protected void onPause() {
+        nfcAdapter.disableForegroundDispatch(this);
+        super.onPause();
+    }
+
+    @Override
+    protected void onNewIntent(Intent intent) {
+        intentHandler(intent);
+    }
+
+    private void intentHandler(Intent intent) {
+        String intentAction = intent.getAction();
+        if(NfcAdapter.ACTION_NDEF_DISCOVERED.equals(intentAction) ||
+                NfcAdapter.ACTION_TECH_DISCOVERED.equals(intentAction)) {
+            Tag tag = intent.getParcelableExtra(NfcAdapter.EXTRA_TAG);
+            String[] techList = tag.getTechList();
+            for (String tech : techList) {
+                if (tech.equals(Ndef.class.getName())) {
+//                    SharedPreferences sharedPreferences = getSharedPreferences("account", MODE_PRIVATE);
+//                    int snum = sharedPreferences.getInt("snum", 0);
+                    writeNfcTag(String.valueOf(snum), tag);
+                }
+            }
+        }
+    }
+
+    private void writeNfcTag(String msg, Tag tag) {
+        NdefRecord[] ndefRecords = new NdefRecord[1];
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            ndefRecords[0] = NdefRecord.createTextRecord("", msg);
+        }
+        NdefMessage ndefMessage = new NdefMessage(ndefRecords);
+        Ndef ndef = Ndef.get(tag);
+        try {
+            ndef.connect();
+            ndef.writeNdefMessage(ndefMessage);
+            ndef.close();
+//            et1.setText("");
+            Tools.displayToast(getApplication(), "성공적으로 등록되었습니다. 태그번호: " + msg);
+        } catch (FormatException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
     private void initSildeMenu() {
 
