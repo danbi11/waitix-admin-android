@@ -39,7 +39,7 @@ public class ManualActivity extends Activity implements View.OnClickListener{
     private FrameLayout.LayoutParams leftMenuLayoutPrams;
     private int leftMenuWidth;
     private static boolean isLeftExpanded;
-    private ImageView btn_menu, btn_refresh, btn_offline;
+    private ImageView btn_menu;
     private RelativeLayout btn_waitingList, btn_pastWaitingList, btn_modify, btn_waitingClose, btn_setting, btn_manual;
     private TextView tv_storeName;
     private ImageView btn_logout;
@@ -54,8 +54,6 @@ public class ManualActivity extends Activity implements View.OnClickListener{
 
     private BackPressCloseHandler backPressCloseHandler; //뒤로가기 두번눌러종료
 
-
-    ImageView howtouse_btn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -73,14 +71,6 @@ public class ManualActivity extends Activity implements View.OnClickListener{
         name = sharedPreferences.getString("name", "");
         tv_storeName = (TextView)findViewById(R.id.tv_storeName);
         tv_storeName.setText(name);
-
-        howtouse_btn = (ImageView)findViewById(R.id.howtouse_btn);
-        howtouse_btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-            }
-        });
 
 
 

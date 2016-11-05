@@ -99,10 +99,14 @@ public class MainActivity extends Activity implements View.OnClickListener {
         /* 리스트에 데이터 넣기 */
         ListView listView = (ListView) findViewById(R.id.listView_waiting);
         ArrayList<ListviewItem> data = new ArrayList<>();
-        ListviewItem sample1 = new ListviewItem(waitingNum,"13:03:21", 4, R.drawable.store_main_albtn);
-        ListviewItem sample2 = new ListviewItem(++waitingNum,"13:24:53", 2, R.drawable.store_main_offentbtn);
-            data.add(sample1);
-            data.add(sample2);
+        ListviewItem sample1 = new ListviewItem(waitingNum,"13:03:21", 4, 1);
+        ListviewItem sample2 = new ListviewItem(++waitingNum,"13:24:53", 2, 1);
+        ListviewItem sample3 = new ListviewItem(++waitingNum,"13:24:53", 2, 2);
+        ListviewItem sample4 = new ListviewItem(++waitingNum,"13:24:53", 2, 0);
+        data.add(sample1);
+        data.add(sample2);
+        data.add(sample3);
+        data.add(sample4);
 
         ListviewAdapter adapter = new ListviewAdapter(this, R.layout.list_item_waiting, data);
         listView.setAdapter(adapter);

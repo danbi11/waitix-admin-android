@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.TranslateAnimation;
+import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -39,6 +40,8 @@ public class ModifyActivity extends Activity implements View.OnClickListener {
 
     private BackPressCloseHandler backPressCloseHandler; //뒤로가기 두번눌러종료
 
+    EditText etID, etPassword, etPassword2, etName, etTel, etLocation, etDesc, etAlarmtime;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,6 +68,22 @@ public class ModifyActivity extends Activity implements View.OnClickListener {
             }
         });
 
+        etID = (EditText) findViewById(R.id.etID);
+
+        etPassword = (EditText) findViewById(R.id.etPassword);
+
+        etPassword2 = (EditText) findViewById(R.id.etPassword2);
+
+        etName = (EditText) findViewById(R.id.etName);
+
+        etTel = (EditText) findViewById(R.id.etTel);
+
+        etLocation = (EditText) findViewById(R.id.etLocation);
+
+        etDesc = (EditText) findViewById(R.id.etDesc);
+
+        etAlarmtime = (EditText) findViewById(R.id.etAlarmtime);
+        
     }
 
     private void initSildeMenu() {

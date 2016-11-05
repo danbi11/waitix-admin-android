@@ -12,20 +12,20 @@ public class ListviewItem2 {
     public int getWaitingNum() {
         return waitingNum;
     }
-    public String getTime(){
-        return time;
-    }
     public int getNumOfPeople(){
         return numOfPeople;
     }
     public int getStatus(){
         return status;
     }
+    public String getTime(){
+        return time;
+    }
 
-    public ListviewItem2(int waitingNum, String time, int numOfPeople, int status){
+    public ListviewItem2(int waitingNum, int numOfPeople,  int status, String time){
         this.waitingNum = waitingNum;
-        this.time = time;
         this.numOfPeople = numOfPeople;
         this.status = status;
+        this.time = time;
     }
 }

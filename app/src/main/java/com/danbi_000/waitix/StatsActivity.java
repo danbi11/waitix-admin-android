@@ -29,13 +29,14 @@ public class StatsActivity extends Activity implements View.OnClickListener{
     private FrameLayout.LayoutParams leftMenuLayoutPrams;
     private int leftMenuWidth;
     private static boolean isLeftExpanded;
-    private ImageView btn_menu, btn_refresh, btn_offline;
+    private ImageView btn_menu;
     private RelativeLayout btn_waitingList, btn_pastWaitingList, btn_modify, btn_waitingClose, btn_setting, btn_manual;
     private TextView tv_storeName;
     private ImageView btn_logout;
     public String name;
     public int snum;
 
+    RelativeLayout rl_select, btnWeek, btnMonth;
     private BackPressCloseHandler backPressCloseHandler; //뒤로가기 두번눌러종료
 
 
@@ -55,6 +56,13 @@ public class StatsActivity extends Activity implements View.OnClickListener{
         name = sharedPreferences.getString("name", "");
         tv_storeName = (TextView)findViewById(R.id.tv_storeName);
         tv_storeName.setText(name);
+
+        /* week, month 메뉴 선택 */
+        rl_select = (RelativeLayout) findViewById(R.id.rl_select);
+        btnWeek = (RelativeLayout) findViewById(R.id.btnWeek);
+        btnWeek.setOnClickListener(this);
+        btnMonth = (RelativeLayout) findViewById(R.id.btnMonth);
+        btnMonth.setOnClickListener(this);
 
     }
     private void initSildeMenu() {
@@ -242,6 +250,18 @@ public class StatsActivity extends Activity implements View.OnClickListener{
                 finish();
                 startActivity(intentToLogin);
                 Toast.makeText(getApplicationContext(),"로그아웃 되었습니다.",Toast.LENGTH_SHORT).show();
+                break;
+
+            case R.id.btnWeek:
+                rl_select.setBackgroundResource(R.drawable.store_statics_week);
+
+
+                break;
+
+            case R.id.btnMonth:
+                rl_select.setBackgroundResource(R.drawable.store_statics_month);
+
+
                 break;
         }
     }

@@ -86,24 +86,26 @@
                         android:background="#f4f2f8">
 
                         <RelativeLayout
-                            android:id="@+id/btnWeek"
-                            android:layout_width="180dp"
-                            android:layout_height="40dp"
-                            android:background="#bbbbbb">
-
-                        </RelativeLayout>
-                        <RelativeLayout
-                            android:id="@+id/btnMonth"
-                            android:layout_width="180dp"
-                            android:layout_height="40dp"
-                            android:background="#cccccc"
-                            android:layout_toRightOf="@+id/btnWeek">
-
+                            android:id="@+id/rl_select"
+                            android:layout_width="360dp"
+                            android:layout_height="52dp"
+                            android:background="@drawable/store_statics_week">
+                            <RelativeLayout
+                                android:id="@+id/btnWeek"
+                                android:layout_width="180dp"
+                                android:layout_height="52dp">
+                            </RelativeLayout>
+                            <RelativeLayout
+                                android:id="@+id/btnMonth"
+                                android:layout_width="180dp"
+                                android:layout_height="52dp"
+                                android:layout_toRightOf="@+id/btnWeek">
+                            </RelativeLayout>
                         </RelativeLayout>
                         <RelativeLayout
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:layout_below="@+id/btnWeek"
+                            android:layout_below="@+id/rl_select"
                             android:background="@drawable/store_statics_bg"
                             android:layout_margin="10dp">
                             <RelativeLayout
@@ -240,7 +242,7 @@
                                 android:gravity="center"
                                 android:layout_marginLeft="30dp"
                                 android:layout_below="@+id/rl3"
-                                android:layout_marginTop="20dp">
+                                android:layout_marginTop="15dp">
                                 <TextView
                                     android:id="@+id/tv_averageTime"
                                     android:layout_width="wrap_content"
@@ -305,7 +307,7 @@
                                 android:gravity="center"
                                 android:layout_marginLeft="30dp"
                                 android:layout_below="@+id/rl5"
-                                android:layout_marginTop="20dp">
+                                android:layout_marginTop="15dp">
                                 <TextView
                                     android:id="@+id/tv_enterTeam"
                                     android:layout_width="wrap_content"

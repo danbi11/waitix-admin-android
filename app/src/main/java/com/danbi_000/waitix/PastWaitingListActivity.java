@@ -74,10 +74,14 @@ public class PastWaitingListActivity extends Activity implements View.OnClickLis
         int waitingNum=1;
         ListView listView = (ListView) findViewById(R.id.listView_past_waiting);
         ArrayList<ListviewItem2> data = new ArrayList<>();
-        ListviewItem2 sample1 = new ListviewItem2(waitingNum,"2016.03.25 11:54:26", 4, 0);
-        ListviewItem2 sample2 = new ListviewItem2(++waitingNum,"2016.03.25 11:54:26", 2, 1);
+        ListviewItem2 sample1 = new ListviewItem2(waitingNum, 4,  0, "2016.03.25 11:54:26");
+        ListviewItem2 sample2 = new ListviewItem2(++waitingNum, 2, 1, "2016.03.25 11:54:26");
+        ListviewItem2 sample3 = new ListviewItem2(++waitingNum, 2, 2, "2016.03.25 11:54:26");
+        ListviewItem2 sample4 = new ListviewItem2(++waitingNum, 2, 1, "2016.03.25 11:54:26");
         data.add(sample1);
         data.add(sample2);
+        data.add(sample3);
+        data.add(sample4);
 
         ListviewAdapter2 adapter = new ListviewAdapter2(this, R.layout.list_item_past_waiting, data);
         listView.setAdapter(adapter);
